@@ -2,11 +2,14 @@ const Product = require('../models/product')
 
 // for routing
 const getAllProducts = async (req, res) => {
-  const { type, company, color, material } = req.query
+  const { type, company, color, material, name } = req.query
   const queryObject = {}
 
   // if we provide no value, we get back all values
   // the rest of the logic is based on certain queries
+  if (name) {
+    queryObject.name = name
+  }
   if (type) {
     queryObject.type = type
   }
@@ -16,17 +19,18 @@ const getAllProducts = async (req, res) => {
   if (color) {
     queryObject.color = color
   }
-
-  // material query
-  // if we provide more values $in operator
-  if (material && Array.isArray(material)) {
-    queryObject.material = { $in: material }
-  }
-  // $all operator matches arrays that contain all elements from the query
-  else if (material && Array.isArray(material)) {
-    queryObject.material = { $all: material }
-  } else {
-    queryObject.material = material
+  if (material) {
+    // material query
+    // at least one match for multiple values --> $in operator
+    if (material && Array.isArray(material)) {
+      queryObject.material = { $in: material }
+    } else {
+      queryObject.material = material
+    }
+    // // precise matching for all values --> $all operator
+    // if (material && Array.isArray(material)) {
+    //   queryObject.material = { $all: material }
+    //   // single value matching
   }
 
   try {

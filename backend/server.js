@@ -9,7 +9,7 @@ const errorMiddleware = require('./middleware/error-middleware')
 const notFoundMiddleware = require('./middleware/not-found-middleware')
 
 const app = express()
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5002
 
 app.use(express.json())
 app.use(cors({ origin: process.env.MONGO_URI }))
