@@ -14,7 +14,7 @@ const port = process.env.PORT || 5000
 app.use(express.json())
 app.use(cors({ origin: process.env.MONGO_URI }))
 
-// routes
+// route handlers
 
 app.get('/', (req, res) => {
   res.send('<h1>Store API</h1><a href="/products">products route</a>')

@@ -1,3 +1,5 @@
-const notFoundMiddleware = async (err, req, res, next) => {
-  res.status(404).json({ msg: 'not found-error' })
+const notFoundMiddleware = async (req, res) => {
+  res.status(404).send('route does not exist')
 }
+
+module.exports = notFoundMiddleware
