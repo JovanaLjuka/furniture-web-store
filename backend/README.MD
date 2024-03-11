@@ -13,3 +13,5 @@ code structure it catches error using middleware, instead of always typing try..
 error-middleware to catch all different errors that can happen, and not-found middleware that provides 404 error
 
 Database populated with products.json
+
+Use map-reduce for price sum https://www.mongodb.com/docs/manual/tutorial/map-reduce-examples/
