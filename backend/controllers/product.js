@@ -2,13 +2,13 @@ const Product = require('../models/product')
 
 // for routing
 const getAllProducts = async (req, res) => {
-  const { type, company, color, material, name } = req.query
+  const { type, company, color, material, name, sort } = req.query
   const queryObject = {}
 
   // if we provide no value, we get back all values
   // the rest of the logic is based on certain queries
   if (name) {
-    queryObject.name = name
+    queryObject.name = { $regex: name, $options: 'i' }
   }
   if (type) {
     queryObject.type = type
@@ -34,7 +34,12 @@ const getAllProducts = async (req, res) => {
   }
 
   try {
-    const products = await Product.find(queryObject)
+    let result = Product.find(queryObject)
+    if (sort) {
+      const sortList = sort.split(',').join(' ')
+      result = result.sort(sortList)
+    }
+    const products = await result
     res.status(200).json({ products })
   } catch (error) {
     console.error('Error fetching products:', error)
