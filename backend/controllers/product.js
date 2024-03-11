@@ -2,7 +2,7 @@ const Product = require('../models/product')
 
 // for routing
 const getAllProducts = async (req, res) => {
-  const { type, company, color, material, name, sort } = req.query
+  const { type, company, color, material, name, sort, fields } = req.query
   const queryObject = {}
 
   // if we provide no value, we get back all values
@@ -38,6 +38,10 @@ const getAllProducts = async (req, res) => {
     if (sort) {
       const sortList = sort.split(',').join(' ')
       result = result.sort(sortList)
+    }
+    if (fields) {
+      const fieldList = fields.split(',').join(' ')
+      result = result.select(fieldList)
     }
     const products = await result
     res.status(200).json({ products })
