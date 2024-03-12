@@ -1,16 +1,22 @@
 const Product = require('../models/product')
 
 // for routing
+
 const getAllProducts = async (req, res) => {
+  const products = await Product.find()
+  res.status(200).json({ products })
+}
+
+const getSingleProduct = async (req, res) => {
+  const product = await Product.findOne({ name: req.params.name })
+  res.status(200).json({ product })
+}
+
+const searchProducts = async (req, res) => {
   const { type, company, color, material, name, sort, fields, priceFilter } =
     req.query
   const queryObject = {}
 
-  // if we provide no value, we get back all values
-  // the rest of the logic is based on certain queries
-  if (name) {
-    queryObject.name = { $regex: name, $options: 'i' }
-  }
   if (type) {
     queryObject.type = type
   }
@@ -28,14 +34,19 @@ const getAllProducts = async (req, res) => {
     } else {
       queryObject.material = material
     }
-    // // precise matching for all values --> $all operator
-    // if (material && Array.isArray(material)) {
-    //   queryObject.material = { $all: material }
-    //   // single value matching
   }
+  if (name) {
+    queryObject.name = { $regex: name, $options: 'i' }
+  }
+
+  // // precise matching for all values --> $all operator
+  // if (material && Array.isArray(material)) {
+  //   queryObject.material = { $all: material }
+  //   // single value matching
 
   try {
     let result = Product.find(queryObject)
+
     if (sort) {
       const sortList = sort.split(',').join(' ')
       result = result.sort(sortList)
@@ -71,4 +82,4 @@ const getAllProducts = async (req, res) => {
   }
 }
 
-module.exports = getAllProducts
+module.exports = { getAllProducts, getSingleProduct, searchProducts }
