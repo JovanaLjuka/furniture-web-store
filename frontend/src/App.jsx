@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import {
   AboutPage,
   CartPage,
@@ -20,13 +21,59 @@ const apiCall = () => {
   })
 }
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomePage />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <LandingPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'products',
+        element: <ProductsPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        index: 'products/:id',
+        element: <SingleProductPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        index: 'cart',
+        element: <CartPage />,
+      },
+      {
+        path: 'about',
+        element: <AboutPage />,
+      },
+      {
+        path: 'checkout',
+        element: <CheckoutPage />,
+      },
+      {
+        path: 'orders',
+        element: <OrdersPage />,
+      },
+    ],
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
+    errorElement: <ErrorPage />,
+  },
+])
+
 const App = () => {
-  return (
-    <div>
-      <h1>Furniture Web Store</h1>
-      <button onClick={() => apiCall()}>Make API call</button>
-    </div>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
