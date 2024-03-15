@@ -1,18 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
-  font-family: Abhaya-R;
-  src: url(/src/assets/Abhaya_Libre/AbhayaLibre-Regular.ttf);
+ font-family: 'Tenor';
+ src: local("Tenor_Sans")
+ url(./assets/Tenor_Sans/TenorSans-Regular.ttf) format("truetype");
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 100%;
-}
-
-body {
-  background-color: #f5ebe0;
-  font-family: "Abhaya-R";
-}/*# sourceMappingURL=index.css.map */
