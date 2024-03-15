@@ -1,5 +1,14 @@
+import { Outlet } from 'react-router-dom'
+
 const Homepage = () => {
-  return <div>Homepage</div>
+  return (
+    <>
+      <nav>
+        <span>navbar</span>
+      </nav>
+      <Outlet />
+    </>
+  )
 }
 
 export default Homepage

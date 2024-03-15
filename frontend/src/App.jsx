@@ -15,11 +15,11 @@ import {
   SingleProductPage,
 } from './pages'
 
-const apiCall = () => {
-  axios.get('http://localhost:5002/products').then((response) => {
-    console.log(response.data)
-  })
-}
+// const apiCall = () => {
+//   axios.get('http://localhost:5002/products').then((response) => {
+//     console.log(response.data)
+//   })
+// }
 
 const router = createBrowserRouter([
   {

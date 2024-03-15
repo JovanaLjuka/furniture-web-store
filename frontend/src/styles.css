@@ -1,5 +1,5 @@
 @font-face {
-  font-family: Abhaya-R;
+  font-family: "Abhaya-R";
   src: url(/src/assets/Abhaya_Libre/AbhayaLibre-Regular.ttf);
 }
 * {
@@ -15,4 +15,4 @@ html {
 body {
   background-color: #f5ebe0;
   font-family: "Abhaya-R";
-}/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=styles.css.map */
