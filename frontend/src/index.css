@@ -10,3 +10,9 @@
     src: local('Tenor_Sans') url(./assets/Tenor_Sans/TenorSans-Regular.ttf) format('truetype');
   }
 }
+
+@layer components {
+  .align-elements {
+    @apply mx-auto max-w-7xl px-8;
+  }
+}
