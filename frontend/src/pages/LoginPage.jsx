@@ -3,7 +3,7 @@ import { Form, Link } from 'react-router-dom';
 
 const LoginPage = () => {
   return (
-    <section className="h-screen grid place-items-center bg-stone-100 font-tenor">
+    <section className="h-screen grid place-items-center text-brown-900 bg-stone-100 font-tenor">
       <Form
         method="post"
         className="card gap-y-5 rounded-xl border-brown-700 bg-stone-300 w-96 p-10  shadow-lg"

@@ -30,7 +30,7 @@ export default {
         800: '#846358',
         900: '#43302b',
       },
-      gray: {
+      grey: {
         300: '#d1d5db',
         400: '#a1a1aa',
         500: '#6b7280',
@@ -57,6 +57,10 @@ export default {
       rose: {
         300: '#fda4af',
         400: '#fb7185',
+      },
+      white: {
+        50: '#fafaf9',
+        100: '#f5f5f4',
       },
     },
   },
