@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className="bg-grey-300 py-2 text-neutral-content">
+    <header className="bg-lavander-200 py-2 text-neutral-content">
       <div className="align-elements flex justify-center sm:justify-end">
         {/* USER */}
         {/* LINKS */}

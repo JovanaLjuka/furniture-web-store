@@ -7,9 +7,6 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    fontFamily: {
-      tenor: ['Tenor', 'sans-serif'],
-    },
     screens: {
       sm: '480px',
       md: '768px',
@@ -39,7 +36,6 @@ export default {
       },
       zinc: {
         300: '#d4d4d8',
-        400: '#a1a1aa',
         500: '#71717a',
         600: '#52525b',
         700: '#3f3f46',
@@ -63,10 +59,21 @@ export default {
         50: '#fafaf9',
         100: '#f5f5f4',
       },
+      lavander: {
+        100: '#D9B8C4',
+        200: '#957186',
+        300: '#703D57',
+        400: '#402A2C',
+      },
     },
   },
 
-  extend: {},
+  extend: {
+    fontFamily: {
+      ojuju: ['Ojuju', 'sans - serif'],
+      tenor: ['Tenor Sans', 'sans - serif'],
+    },
+  },
   plugins: [require('daisyui'), require('@tailwindcss/typography')],
   daisyui: {
     themes: [],
