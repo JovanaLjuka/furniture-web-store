@@ -1,18 +1,24 @@
 const colors = require('tailwindcss/colors');
-const daisyui = require('daisyui')
+const daisyui = require('daisyui');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {
-      fontFamily:{
-        tenor:'Tenor',
-      }
+    fontFamily: {
+      tenor: ['Tenor', 'sans-serif'],
     },
-    colors:{
-brown: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
+
+    colors: {
+      brown: {
         50: '#fdf8f6',
         100: '#f2e8e5',
         200: '#eaddd7',
@@ -48,22 +54,21 @@ brown: {
         700: '#44403c',
         800: '#292524',
       },
-    }
+      rose: {
+        300: '#fda4af',
+        400: '#fb7185',
+      },
+    },
   },
+
+  extend: {},
   plugins: [require('daisyui'), require('@tailwindcss/typography')],
-  daisyui:{
-    themes: [
-      {
-        mytheme:{
-          "bg-color": "#f5f5f5",
-        }
-      }
-    ],
+  daisyui: {
+    themes: [],
     base: true,
     styled: true,
     utils: true,
-    prefix: "",
-    logs: true
-  }
+    prefix: '',
+    logs: true,
+  },
 };
-

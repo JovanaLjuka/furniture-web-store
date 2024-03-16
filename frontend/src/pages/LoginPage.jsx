@@ -13,9 +13,12 @@ const LoginPage = () => {
 
         <FormInput type="password" label="password" name="password" defaultValue="secret" />
         <div className="mt-2">
-          <SubmitBtn text="login" />
+          <SubmitBtn text="login" className="uppercase" />
         </div>
-        <button type="button" className="btn btn-block hover:bg-stone-500">
+        <button
+          type="button"
+          className="btn btn-block bg-rose-300 bg-opacity-80 hover:bg-rose-400 uppercase"
+        >
           guest user
         </button>
         <p className="text-center">

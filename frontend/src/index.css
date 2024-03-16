@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
- font-family: 'Tenor';
- src: local("Tenor_Sans")
- url(./assets/Tenor_Sans/TenorSans-Regular.ttf) format("truetype");
+@layer base {
+  @font-face {
+    font-family: 'Tenor';
+    font-style: normal;
+    font-weight: 200;
+    src: local('Tenor_Sans') url(./assets/Tenor_Sans/TenorSans-Regular.ttf) format('truetype');
+  }
 }
