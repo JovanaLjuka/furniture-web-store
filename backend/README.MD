@@ -15,3 +15,9 @@ error-middleware to catch all different errors that can happen, and not-found mi
 Database populated with products.json
 
 Use map-reduce for price sum https://www.mongodb.com/docs/manual/tutorial/map-reduce-examples/
+
+Express – For server initialization and routing.
+Mongoose – To work with mongo-DB.
+Dotenv – To load our environment variable from the .env file.
+Joi – for creating validation schema for routes.
+Express-validation – To validate in request before it reaches the main controller.
