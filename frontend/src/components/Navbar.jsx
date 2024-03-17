@@ -6,11 +6,11 @@ import { NavLinks } from '../components';
 
 const Navbar = () => {
   return (
-    <nav className="bg-lavander-100 navbar align-elements m-0 font-color font-style">
+    <nav className="bg-khaki-50 w-screen navbar align-elements m-0 font-color font-style">
       <div className="navbar-start font-style">
         <NavLink
           to="/"
-          className="hidden lg:flex btn text-4xl font-ojuju border-none text-lavander-300 items-center tracking-[1.4rem] font-extralight"
+          className="hidden lg:flex btn text-4xl font-ojuju border-none text-khaki-200 items-center tracking-[1.4rem] font-extralight"
         >
           <GiSofa /> <span className="ml-2">UFCS</span>
         </NavLink>

@@ -9,7 +9,7 @@ import img7 from '../assets/Images/table.jpg';
 import { NavLink } from 'react-router-dom';
 const Aboutpage = () => {
   return (
-    <div className="relative  flex flex-row md:flex-wrap mx-10 font-color">
+    <div className="relative  flex flex-row md:flex-wrap mx-10 font-color py-10">
       <div>
         <div className="relative mx-10 items-center justify-between max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">

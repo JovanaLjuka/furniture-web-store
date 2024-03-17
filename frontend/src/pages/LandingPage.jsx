@@ -1,5 +1,11 @@
-const LandingPage = () => {
-  return <div>LandingPage</div>
-}
+import { Hero } from '../components';
 
-export default LandingPage
+const LandingPage = () => {
+  return (
+    <main>
+      <Hero />
+    </main>
+  );
+};
+
+export default LandingPage;

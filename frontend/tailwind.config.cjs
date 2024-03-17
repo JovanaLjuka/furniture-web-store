@@ -8,11 +8,10 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     screens: {
-      sm: '480px',
+      sm: '640px',
       md: '768px',
       lg: '1024px',
       xl: '1280px',
-      '2xl': '1535px',
     },
 
     colors: {
@@ -64,6 +63,17 @@ export default {
         200: '#957186',
         300: '#703D57',
         400: '#402A2C',
+      },
+      khaki: {
+        50: '#D9CDC7',
+        100: '#B2A198',
+        200: '6f5e53',
+      },
+      taupe: {
+        50: '#4C443C',
+      },
+      blue: {
+        50: '#7C98B3',
       },
     },
   },

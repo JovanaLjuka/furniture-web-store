@@ -7,7 +7,7 @@ const Homepage = () => {
     <main>
       <Header />
       <Navbar />
-      <section className="align-elements py-20 ">
+      <section className="align-elements py-5 ">
         <Outlet />
       </section>
     </main>
