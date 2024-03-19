@@ -6,3 +6,6 @@ export { default as NavLinks } from './NavLinks';
 export { default as Hero } from './Hero';
 export { default as Slider } from './Slider';
 export { default as Collections } from './Collections';
+export { default as Error } from './Error';
+export { default as ProductsGrid } from './ProductsGrid';
+export { default as SectionTitle } from './SectionTitle';

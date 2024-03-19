@@ -1,6 +1,6 @@
-import axios from 'axios'
-import React from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import axios from 'axios';
+import React from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import {
   AboutPage,
   CartPage,
@@ -13,7 +13,14 @@ import {
   ProductsPage,
   RegisterPage,
   SingleProductPage,
-} from './pages'
+} from './pages';
+
+import { Error } from './components';
+
+// loaders
+
+import { loader as ProductsLoader } from './pages/ProductsPage';
+import { loader as SingleProductLoader } from './pages/SingleProductPage';
 
 // const apiCall = () => {
 //   axios.get('http://localhost:5002/products').then((response) => {
@@ -30,20 +37,22 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <LandingPage />,
-        errorElement: <ErrorPage />,
+        errorElement: <Error />,
       },
       {
         path: 'products',
         element: <ProductsPage />,
-        errorElement: <ErrorPage />,
+        errorElement: <Error />,
+        loader: ProductsLoader,
       },
       {
-        index: 'products/:id',
+        path: '/:_id',
         element: <SingleProductPage />,
-        errorElement: <ErrorPage />,
+        errorElement: <Error />,
+        loader: SingleProductLoader,
       },
       {
-        index: 'cart',
+        path: 'cart',
         element: <CartPage />,
       },
       {
@@ -70,10 +79,10 @@ const router = createBrowserRouter([
     element: <RegisterPage />,
     errorElement: <ErrorPage />,
   },
-])
+]);
 
 const App = () => {
-  return <RouterProvider router={router} />
-}
+  return <RouterProvider router={router} />;
+};
 
-export default App
+export default App;
