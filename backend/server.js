@@ -7,6 +7,8 @@ const connectDB = require('./db/connect')
 const productRouter = require('./routes/product')
 const errorMiddleware = require('./middleware/error-middleware')
 const notFoundMiddleware = require('./middleware/not-found-middleware')
+const path = require('path')
+
 const {
   getAllProducts,
   getSingleProduct,
@@ -20,9 +22,13 @@ app.use(express.json())
 app.use(cors())
 
 // middleware
-app.use('/products', productRouter)
+app.use('/api/products', productRouter)
 app.use(errorMiddleware)
 app.use(notFoundMiddleware)
+
+app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(express.urlencoded({ extended: false }))
 
 // // route handlers
 // app.get('/', (req, res) => {

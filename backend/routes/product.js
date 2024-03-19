@@ -5,14 +5,19 @@ const {
   getAllProducts,
   getSingleProduct,
   searchProducts,
+  createProduct,
+  updateProduct,
+  deleteProduct,
 } = require('../controllers/product')
 
 // routes
 
+// base route - /api/products
+
 productRouter.get('/', getAllProducts)
 // http://localhost:5002/products/
 
-productRouter.get('/singleProduct/:name', getSingleProduct)
+productRouter.get('/:id', getSingleProduct)
 // http://localhost:5002/products/singleProduct/Wish
 
 productRouter.get('/search', searchProducts)
@@ -33,5 +38,11 @@ http://localhost:5002/products/search?type=chair&page=2
 4. Price filtering
 http://localhost:5002/products/search?priceFilter=0,500
 */
+
+productRouter.post('/', createProduct)
+
+productRouter.put('/:id', updateProduct)
+
+productRouter.delete('/:id', deleteProduct)
 
 module.exports = productRouter
