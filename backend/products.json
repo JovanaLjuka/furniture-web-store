@@ -2,7 +2,7 @@
   {
     "name": "Devon",
     "type": "chair",
-    "color": "blue",
+    "color": ["#EE7674", "#D0D6B5", "#75B9BE"],
     "image": "Molteni&C/Devon/DevonChair.jpg",
     "description": "All the frames are made of solid with eucalyptus, grey, black oak, caffee oak and sunrise oak veneers. Seats and backrests upholstered in fabric or leather chosen from the Molteni&C range.",
     "material": ["leather", "wood"],
@@ -14,7 +14,7 @@
   {
     "name": "Aster",
     "type": "coffee table",
-    "color": "brown",
+    "color": ["#210203", "#D7FDF0"],
     "image": "Molteni&C/Aster/AsterCoffeeTable.jpg",
     "description": "The Aster coffee table, designed by Vincent Van Duysen, is the ultimate expression of compositional rationality and craftsmanship. A unique object made entirely by hand, a contemporary work of art that combines aesthetics and functionality. Each table has a slightly different connotation, testifying to its handcrafted nature.",
     "material": ["glass", "steel"],
@@ -26,7 +26,7 @@
   {
     "name": "Cinnamon",
     "type": "armchair",
-    "color": "green",
+    "color": ["#5F634F", "#5F634F", "#323031"],
     "image": "Molteni&C/Cinnamon/Cinnamon-birdview.jpg",
     "description": "The Cinnamon armchair by the Japanese designer Naoto Fukasawa is a masterpiece of furniture design that seamlessly blends form, function, and comfort. The enveloping shape exudes an air of warmth and tranquility, inviting you to sink in and relax.",
     "material": ["wool"],
@@ -38,7 +38,7 @@
   {
     "name": "Skin",
     "type": "sofa",
-    "color": "brown",
+    "color": ["#5F634F", "#D7FDF0", "#323031"],
     "image": "Molteni&C/Skin/skin-interior.jpeg",
     "description": "A texture crossed by light and suspended in space.The result of many years of collaboration between Jean Nouvel and Molteni&C, SKiN is a self supporting hide leather cover with a special pattern. Leather without body reshapes itself over time so that innovation and memory hold the same form.",
     "material": ["leather"],
@@ -50,7 +50,7 @@
   {
     "name": "Wish",
     "type": "bed",
-    "color": "brown",
+    "color": ["#5F634F", "#5F634F", "#323031"],
     "image": "Molteni&C/Wish/wish-fullscreen.jpg",
     "description": "Wish is the best example of the use of wood and attention given to details to create a timeless classic. A bed in solid wood with minimal, refined lines, comes with soft pillows for the head, in fabric or in leather, which combine with the woods of the structure, Graphite Oak, Coffee oak and Black Oak",
     "material": ["leather", "wood"],
@@ -62,7 +62,7 @@
   {
     "name": "Teorema",
     "type": "drawer",
-    "color": "brown",
+    "color": ["#210203", "#D7FDF0", "#084C61"],
     "image": "Molteni&C/Teorema/teorema-room.jpeg",
     "description": "The Teorema project is the solid part of a void. It is the flip side of Grado°, the collection that explores the form of a void. It is the mould as design, the template transferred and shifted that becomes micro architecture, and exceeds all disciplinary boundaries.",
     "material": ["wood"],
@@ -74,7 +74,7 @@
   {
     "name": "Graduate",
     "type": "bookshelf",
-    "color": "bronze",
+    "color": ["#210203", "#D7FDF0", "#084C61"],
     "image": "Molteni&C/Graduate/graduate.jpg",
     "description": "Jean Nouvel has designed a brilliant wall structure resolved in a single shelf anchored to the wall or to the ceiling. Its secret lies in the thick top shelf, which, fixed to the wall or ceiling, contains a system of steel braces, which enables the weight to be distributed evenly along the whole surface of the bookcase.",
     "material": ["steel", "plywood", "aluminium"],
@@ -86,7 +86,7 @@
   {
     "name": "Butt Stool",
     "type": "chair",
-    "color": "beige",
+    "color": ["#210203", "#D7FDF0", "#084C61"],
     "image": "Kelly Wearstler/Butt Stool/buttstool.jpg",
     "description": "Conceptually playful, the Butt Stool is hand-carved from natural stone and transformed into sculptural furniture reminiscent of human forms. This cheeky design serves the dual purpose of a chair, side table or sculptural art while infusing a sense of sophistication and spontaneity in the space it inhabits. Embracing the subtle variations of natural stone and the highly intricate process by which design is made, each stool is one-of-a-kind.",
     "material": ["stone"],
@@ -98,7 +98,7 @@
   {
     "name": "Morro",
     "type": "coffee table",
-    "color": "beige",
+    "color": ["#210203", "#D7FDF0"],
     "image": "Kelly Wearstler/Morro/morro.jpg",
     "description": "Hand carved from solid stone, the Morro Coffee Table exemplifies modernity through geometric simplicity and form. The sculptural 3-sphere base and substantial top are each composed of solid Coulmier Limestone with a honed finish that enhances the richness of this beautiful natural stone. Also available in Nero Marquina and Endive marble.",
     "material": ["stone"],
@@ -110,7 +110,7 @@
   {
     "name": "Morro Vanity Chair",
     "type": "chair",
-    "color": "red",
+    "color": ["#210203", "#D7FDF0"],
     "image": "Kelly Wearstler/Morro Vanity Chair/morro.jpg",
     "description": "Upholstered in the finest boucle fabric, architectural and curvaceous forms intersect in the immaculately designed Morro Vanity Chair.",
     "material": ["boucle"],
@@ -122,7 +122,7 @@
   {
     "name": "Fairfax",
     "type": "chair",
-    "color": "district tobacco",
+    "color": ["#210203", "#D7FDF0"],
     "image": "Kelly Wearstler/Fairfax/fairfax.jpg",
     "description": "The Fairfax Chair, in either the right hand facing or left hand facing configuration, is a great occasional seating option. The asymmetrical arm and back give the chair a sculptural quality. When paired together, in opposing configurations the drama is heightened. The hardwood frame features double-doweled joinery and is built for longevity. Available in a selection of curated fabrics and leathers.",
     "material": ["linen"],
@@ -134,7 +134,7 @@
   {
     "name": "Souffle Chair",
     "type": "chair",
-    "color": "grey",
+    "color": ["#210203", "#D7FDF0"],
     "image": "Kelly Wearstler/Souffle/souffle.jpg",
     "description": "With its curvilinear form, bold massing, and thoughtful detailing, the Souffle Chair is a modern icon. This chair features solid cast burnished brass legs and an artisanal ruched body which is available in a curated selection of leathers. Non-ruched options are also available.",
     "material": ["leather"],
@@ -146,7 +146,7 @@
   {
     "name": "Blue Period Mirror",
     "type": "mirror",
-    "color": "blue",
+    "color": ["#210203", "#D7FDF0", "#177E89"],
     "image": "Kelly Wearstler/Blue Mirror/blue.jpg",
     "description": "A playful take on a lost childhood object, Blue Period is a functional work of art intended to be interacted with. Featuring reclaimed materials and ambiguous forms produced entirely by hand, this sculptural mirror evokes its own distinct personality in any interior.",
     "material": ["leather"],

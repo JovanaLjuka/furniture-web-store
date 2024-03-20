@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   color: {
-    type: String,
+    type: [String],
     required: true,
   },
   image: {
@@ -40,6 +40,14 @@ const productSchema = new mongoose.Schema({
   designerBio: {
     type: String,
     default: '',
+  },
+  amount: {
+    type: Number,
+    default: 1,
+  },
+  quantity: {
+    type: Number,
+    default: 50,
   },
 })
 

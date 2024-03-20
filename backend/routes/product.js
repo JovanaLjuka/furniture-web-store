@@ -5,6 +5,7 @@ const {
   getAllProducts,
   getSingleProduct,
   searchProducts,
+  filterProducts,
   createProduct,
   updateProduct,
   deleteProduct,
@@ -17,11 +18,11 @@ const {
 productRouter.get('/', getAllProducts)
 // http://localhost:5002/products/
 
+productRouter.get('/:query', searchProducts)
+// http://localhost:5002/products/search?name=ai
+
 productRouter.get('/:id', getSingleProduct)
 // http://localhost:5002/products/singleProduct/Wish
-
-productRouter.get('/search', searchProducts)
-// http://localhost:5002/products/search?name=ai
 
 /*
 URL examples
