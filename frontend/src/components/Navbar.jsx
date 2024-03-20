@@ -3,8 +3,10 @@ import { HiBars3 } from 'react-icons/hi2';
 import { NavLink } from 'react-router-dom';
 import { GiSofa } from 'react-icons/gi';
 import { NavLinks } from '../components';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+  const { amount } = useSelector(store => store.cart);
   return (
     <nav className="bg-khaki-50 w-screen navbar align-elements m-0 font-color font-style">
       <div className="navbar-start font-style">
@@ -36,7 +38,7 @@ const Navbar = () => {
         <NavLink to="cart" className="btn btn-ghost btn-circle btn-md mx-5">
           <div className="cart-icon indicator">
             <GiShoppingCart className="h-10 w-10 text-lavander-400" />
-            <span className="badge badge-sm indicator-item">6</span>
+            <span className="badge badge-sm indicator-item">{amount}</span>
           </div>
         </NavLink>
       </div>
