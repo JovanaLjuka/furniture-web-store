@@ -4,7 +4,7 @@ import ProductsList from './ProductsList';
 import { BsGrid } from 'react-icons/bs';
 import { BsList } from 'react-icons/bs';
 import { useState } from 'react';
-const Products = () => {
+const ProductsContainer = () => {
   const { totalPages, currentPage, totalProducts } = useLoaderData();
   const total = totalProducts;
   const [layout, setLayout] = useState('grid');
@@ -52,4 +52,4 @@ const Products = () => {
     </div>
   );
 };
-export default Products;
+export default ProductsContainer;

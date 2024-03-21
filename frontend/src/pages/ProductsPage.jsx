@@ -1,6 +1,4 @@
-import Filters from '../components/Filters';
-import Pagination from '../components/Pagination';
-import Products from '../components/Products';
+import { FiltersSection, Pagination, ProductsContainer } from '../components';
 import { myFetch } from '../utils';
 const url = '/';
 
@@ -11,14 +9,16 @@ export const loader = async ({ request }) => {
   const totalPages = response.data.totalPages;
   const currentPage = response.data.currentPage;
   const totalProducts = response.data.totalProducts;
-  return { products, totalPages, currentPage, totalProducts };
+  const materials = response.data.materials;
+  console.log(materials);
+  return { products, totalPages, currentPage, totalProducts, materials };
 };
 
 const Productspage = () => {
   return (
     <>
-      <Filters />
-      <Products />
+      <FiltersSection />
+      <ProductsContainer />
       <Pagination />
     </>
   );
