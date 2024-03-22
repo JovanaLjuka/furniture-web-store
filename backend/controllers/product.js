@@ -1,6 +1,13 @@
+const { request } = require('express')
 const Product = require('../models/product')
 
 // for routing
+
+const getSingleProduct = async (req, res) => {
+  const { id: productId } = req.params
+  const product = await Product.findById({ _id: productId })
+  res.status(200).json({ product })
+}
 
 const getAllProducts = async (req, res) => {
   const page = Number(req.query.page) || 1
@@ -8,16 +15,28 @@ const getAllProducts = async (req, res) => {
   const skip = (page - 1) * limit
   const products = await Product.find().limit(limit).skip(skip).exec()
   const count = await Product.countDocuments()
+
+  // materials unique values
+
+  const materialsSet = new Set()
+  products.forEach((product) => {
+    product.material.forEach((material) => {
+      materialsSet.add(material)
+    })
+  })
+  const materials = Array.from(materialsSet)
+
   res.status(200).json({
     products,
     totalPages: Math.ceil(count / limit),
     currentPage: page,
     totalProducts: count,
+    materials,
   })
 }
 
 const searchProducts = async (req, res) => {
-  const { sort, price, query } = req.query
+  const { sort, price, query, material } = req.query
 
   try {
     let result = Product.find({
@@ -27,7 +46,15 @@ const searchProducts = async (req, res) => {
         { type: { $regex: new RegExp(query, 'i') } },
       ],
     })
-
+    if (material) {
+      // material query
+      // at least one match for multiple values --> $in operator
+      if (material && Array.isArray(material)) {
+        result = result.find({ $in: material })
+      } else {
+        result = result.find({ material })
+      }
+    }
     if (sort) {
       const sortList = sort.split(',').join(' ')
       result = result.sort(sortList)
@@ -42,72 +69,22 @@ const searchProducts = async (req, res) => {
     }
 
     const products = await result
-    res.status(200).json({ products })
-  } catch (error) {
-    console.error('Error fetching products:', error)
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
-}
+    const materialsSet = new Set()
+    products.forEach((product) => {
+      product.material.forEach((material) => {
+        materialsSet.add(material)
+      })
+    })
+    const materials = Array.from(materialsSet)
 
-const filterProducts = async (req, res) => {
-  const { color, material, sort, price } = req.query
-  const queryObject = {}
-  console.log(req.query)
-  console.log(req.params)
-  if (color) {
-    queryObject.color = color
-  }
-
-  if (material) {
-    if (material && Array.isArray(material)) {
-      queryObject.material = { $in: material }
-    } else {
-      queryObject.material = material
-    }
-  }
-
-  try {
-    let result = Product.find(queryObject)
-
-    if (sort) {
-      const sortList = sort.split(',').join(' ')
-      result = result.sort(sortList)
-    }
-
-    // price filter
-
-    if (price) {
-      if (price === '0,500') {
-        result = result.find({ price: { $gte: 0, $lte: 500 } })
-      }
-      if (price === '500,1000') {
-        result = result.find({ price: { $gte: 500, $lte: 1000 } })
-      }
-    }
-
-    // pagination logic --> we provide default values if the values are not provided in the query string
-    const page = Number(req.query.page) || 1
-    const limit = Number(req.query.limit) || 3
-    const skip = (page - 1) * limit
-
-    const products = await result.limit(limit).skip(skip).exec()
-    const count = await result.countDocuments()
     res.status(200).json({
       products,
-      totalPages: Math.ceil(count / limit),
-      currentPage: page,
+      materials,
     })
   } catch (error) {
     console.error('Error fetching products:', error)
     res.status(500).json({ error: 'Internal Server Error' })
   }
-}
-
-const getSingleProduct = async (req, res) => {
-  console.log(req.params)
-  const { id: productId } = req.params
-  const product = await Product.findOne({ _id: productId })
-  res.status(200).json({ product })
 }
 
 const createProduct = async (req, res) => {
@@ -132,7 +109,6 @@ module.exports = {
   getAllProducts,
   getSingleProduct,
   searchProducts,
-  filterProducts,
   createProduct,
   updateProduct,
   deleteProduct,
