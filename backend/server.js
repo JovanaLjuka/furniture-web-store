@@ -22,7 +22,7 @@ app.use(express.json())
 app.use(cors())
 
 // middleware
-app.use('/api/products', productRouter)
+app.use('/', productRouter)
 app.use(errorMiddleware)
 app.use(notFoundMiddleware)
 

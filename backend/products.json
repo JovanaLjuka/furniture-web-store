@@ -1,6 +1,6 @@
 [
   {
-    "name": "Devon",
+    "title": "Devon",
     "type": "chair",
     "color": ["#EE7674", "#D0D6B5", "#75B9BE"],
     "image": "Molteni&C/Devon/DevonChair.jpg",
@@ -12,7 +12,7 @@
     "designer-bio": "Rodolfo Dordoni, architect and designer, was born in Milan, where he graduated in Architecture. His collaboration with Molteni&C has gone beyond the production of individual products and has become the creation of a collection for the dining room and night systems. These projects feature hidden high-technology in the products."
   },
   {
-    "name": "Aster",
+    "title": "Aster",
     "type": "coffee table",
     "color": ["#210203", "#D7FDF0"],
     "image": "Molteni&C/Aster/AsterCoffeeTable.jpg",
@@ -24,7 +24,7 @@
     "designer-bio": "Vincent Van Duysen was born in 1962, in Lokeren, Belgium and graduated in architecture at the Higher Institute of Architecture Sint-Lucas, in Ghent. From 1986 to 1989 he worked in Milan and Brussels. He opened his own studio in Antwerp, in 1990 focusing on architecture and interior design. The relationship between interior design and architecture in his work is profound. Furnishings and accessories are designed with an architectural perspective that is not limited by form, but is expressed with a careful perception of interior space and its relationship to the exterior architecture. By interpreting architecture and redefining its proportions, Van Duysen creates objects of great purity and simplicity that still retain a concrete character and solid form."
   },
   {
-    "name": "Cinnamon",
+    "title": "Cinnamon",
     "type": "armchair",
     "color": ["#5F634F", "#5F634F", "#323031"],
     "image": "Molteni&C/Cinnamon/Cinnamon-birdview.jpg",
@@ -36,7 +36,7 @@
     "designer-bio": "Naoto Fukasawa has designed everything from watches, CD players and eyewear to pens, chairs and his L-shaped house and studio. Over his career he has worked for a host of international brands, written several books and held roles as an educator, curator, advisor and more. Across all of these endeavours, he applies his nuanced and gentle design philosophy, which is based on the belief that design is most successful when it is so user-friendly that you may not even notice it."
   },
   {
-    "name": "Skin",
+    "title": "Skin",
     "type": "sofa",
     "color": ["#5F634F", "#D7FDF0", "#323031"],
     "image": "Molteni&C/Skin/skin-interior.jpeg",
@@ -48,7 +48,7 @@
     "designer-bio": "Jean Nouvel was born in 1945 in Fumel, France. His approach to design comes from a need to create objects for his own architectures. This approach created the Less table which was produced by Molteni&C. for the headquarters of the Cartier Foundation. The Ateliers Jean Nouvel design activities reflect a desire to develop an “architectural design”."
   },
   {
-    "name": "Wish",
+    "title": "Wish",
     "type": "bed",
     "color": ["#5F634F", "#5F634F", "#323031"],
     "image": "Molteni&C/Wish/wish-fullscreen.jpg",
@@ -60,7 +60,7 @@
     "designer-bio": "Rodolfo Dordoni, architect and designer, was born in Milan, where he graduated in Architecture. His collaboration with Molteni&C has gone beyond the production of individual products and has become the creation of a collection for the dining room and night systems. These projects feature hidden high-technology in the products."
   },
   {
-    "name": "Teorema",
+    "title": "Teorema",
     "type": "drawer",
     "color": ["#210203", "#D7FDF0", "#084C61"],
     "image": "Molteni&C/Teorema/teorema-room.jpeg",
@@ -72,7 +72,7 @@
     "designer-bio": "Ron Gilad was born in Tel Aviv in 1972. After a few years in New York, he lives and works in Tel Aviv and Milan. Ron Gilad’s hybrid objects combine a practical ingenuity with an aesthetic effect which and are placed on a boundary between the abstract and functional. When he was asked to collaborate with Molteni&C, Ron Gilad initially wondered if he should behave as a designer or just be himself in the most authentic way. He found his answer by creating a connection between his more abstract and artistic ideas and commercial industry mechanisms and converting them into ingenious design products."
   },
   {
-    "name": "Graduate",
+    "title": "Graduate",
     "type": "bookshelf",
     "color": ["#210203", "#D7FDF0", "#084C61"],
     "image": "Molteni&C/Graduate/graduate.jpg",
@@ -84,7 +84,7 @@
     "designer-bio": "Jean Nouvel was born in 1945 in Fumel, France. His approach to design comes from a need to create objects for his own architectures. This approach created the Less table which was produced by Molteni&C. for the headquarters of the Cartier Foundation. The Ateliers Jean Nouvel design activities reflect a desire to develop an “architectural design”."
   },
   {
-    "name": "Butt Stool",
+    "title": "Butt Stool",
     "type": "chair",
     "color": ["#210203", "#D7FDF0", "#084C61"],
     "image": "Kelly Wearstler/Butt Stool/buttstool.jpg",
@@ -96,7 +96,7 @@
     "designer-bio": ""
   },
   {
-    "name": "Morro",
+    "title": "Morro",
     "type": "coffee table",
     "color": ["#210203", "#D7FDF0"],
     "image": "Kelly Wearstler/Morro/morro.jpg",
@@ -108,7 +108,7 @@
     "designer-bio": ""
   },
   {
-    "name": "Morro Vanity Chair",
+    "title": "Morro Vanity Chair",
     "type": "chair",
     "color": ["#210203", "#D7FDF0"],
     "image": "Kelly Wearstler/Morro Vanity Chair/morro.jpg",
@@ -120,7 +120,7 @@
     "designer-bio": ""
   },
   {
-    "name": "Fairfax",
+    "title": "Fairfax",
     "type": "chair",
     "color": ["#210203", "#D7FDF0"],
     "image": "Kelly Wearstler/Fairfax/fairfax.jpg",
@@ -132,7 +132,7 @@
     "designer-bio": ""
   },
   {
-    "name": "Souffle Chair",
+    "title": "Souffle Chair",
     "type": "chair",
     "color": ["#210203", "#D7FDF0"],
     "image": "Kelly Wearstler/Souffle/souffle.jpg",
@@ -144,7 +144,7 @@
     "designer-bio": ""
   },
   {
-    "name": "Blue Period Mirror",
+    "title": "Blue Period Mirror",
     "type": "mirror",
     "color": ["#210203", "#D7FDF0", "#177E89"],
     "image": "Kelly Wearstler/Blue Mirror/blue.jpg",

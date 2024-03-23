@@ -4,8 +4,6 @@ const productRouter = express.Router()
 const {
   getAllProducts,
   getSingleProduct,
-  searchProducts,
-  filterProducts,
   createProduct,
   updateProduct,
   deleteProduct,
@@ -15,13 +13,14 @@ const {
 
 // base route - /api/products
 
-productRouter.get('/', getAllProducts)
+productRouter.get('/all', getAllProducts)
 // http://localhost:5002/products/
 
-productRouter.get('/:query', searchProducts)
+// productRouter.get('/:query', searchProducts)
+
 // http://localhost:5002/products/search?name=ai
 
-productRouter.get('/:id', getSingleProduct)
+// productRouter.get('/single/:title', getSingleProduct)
 // http://localhost:5002/products/singleProduct/Wish
 
 /*

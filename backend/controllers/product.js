@@ -3,110 +3,65 @@ const Product = require('../models/product')
 // for routing
 
 const getAllProducts = async (req, res) => {
-  const page = Number(req.query.page) || 1
-  const limit = Number(req.query.limit) || 3
-  const skip = (page - 1) * limit
-  const products = await Product.find().limit(limit).skip(skip).exec()
-  const count = await Product.countDocuments()
-  res.status(200).json({
-    products,
-    totalPages: Math.ceil(count / limit),
-    currentPage: page,
-    totalProducts: count,
-  })
-}
-
-const searchProducts = async (req, res) => {
-  const { sort, price, query } = req.query
-
-  try {
-    let result = Product.find({
-      $or: [
-        { name: { $regex: new RegExp(query, 'i') } },
-        { company: { $regex: new RegExp(query, 'i') } },
-        { type: { $regex: new RegExp(query, 'i') } },
-      ],
-    })
-
-    if (sort) {
-      const sortList = sort.split(',').join(' ')
-      result = result.sort(sortList)
-    }
-    if (price) {
-      if (price === '0,500') {
-        result = result.find({ price: { $gte: 0, $lte: 500 } })
-      }
-      if (price === '500,1000') {
-        result = result.find({ price: { $gte: 500, $lte: 1000 } })
-      }
-    }
-
-    const products = await result
-    res.status(200).json({ products })
-  } catch (error) {
-    console.error('Error fetching products:', error)
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
-}
-
-const filterProducts = async (req, res) => {
-  const { color, material, sort, price } = req.query
+  const { sort, sort_dir, price, query, material, color } = req.query
   const queryObject = {}
-  console.log(req.query)
-  console.log(req.params)
+
+  if (query) {
+    queryObject.$or = [
+      { title: { $regex: new RegExp(query, 'i') } },
+      { company: { $regex: new RegExp(query, 'i') } },
+      { type: { $regex: new RegExp(query, 'i') } },
+    ]
+  }
   if (color) {
     queryObject.color = color
   }
 
   if (material) {
-    if (material && Array.isArray(material)) {
-      queryObject.material = { $in: material }
-    } else {
-      queryObject.material = material
+    queryObject.material = material
+  }
+
+  const sortOptions = {}
+  if (sort) {
+    sortOptions[sort] = parseInt(sort_dir) || 1
+  }
+  let result = await Product.find(queryObject).sort(sortOptions)
+  if (price) {
+    if (price === '0,500') {
+      result = result.filter(
+        (product) => product.price >= 0 && product.price <= 500
+      )
+    }
+    if (price === '500,1000') {
+      result = result.filter(
+        (product) => product.price >= 500 && product.price <= 1000
+      )
     }
   }
 
-  try {
-    let result = Product.find(queryObject)
+  console.log('sort_dir:', req.query.sort_dir)
+  const products = await result
 
-    if (sort) {
-      const sortList = sort.split(',').join(' ')
-      result = result.sort(sortList)
-    }
-
-    // price filter
-
-    if (price) {
-      if (price === '0,500') {
-        result = result.find({ price: { $gte: 0, $lte: 500 } })
-      }
-      if (price === '500,1000') {
-        result = result.find({ price: { $gte: 500, $lte: 1000 } })
-      }
-    }
-
-    // pagination logic --> we provide default values if the values are not provided in the query string
-    const page = Number(req.query.page) || 1
-    const limit = Number(req.query.limit) || 3
-    const skip = (page - 1) * limit
-
-    const products = await result.limit(limit).skip(skip).exec()
-    const count = await result.countDocuments()
-    res.status(200).json({
-      products,
-      totalPages: Math.ceil(count / limit),
-      currentPage: page,
+  const materialsSet = new Set()
+  products.forEach((product) => {
+    product.material.forEach((material) => {
+      materialsSet.add(material)
     })
-  } catch (error) {
-    console.error('Error fetching products:', error)
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
+  })
+  const materials = Array.from(materialsSet)
+
+  res.status(200).json({
+    products,
+    totalProducts: products.length,
+    materials,
+  })
 }
 
 const getSingleProduct = async (req, res) => {
   console.log(req.params)
-  const { id: productId } = req.params
-  const product = await Product.findOne({ _id: productId })
+  const productTitle = req.params.title
+  console.log(productTitle)
+  const product = await Product.findOne({ title: productTitle })
   res.status(200).json({ product })
 }
 
@@ -131,8 +86,6 @@ const deleteProduct = async (req, res) => {
 module.exports = {
   getAllProducts,
   getSingleProduct,
-  searchProducts,
-  filterProducts,
   createProduct,
   updateProduct,
   deleteProduct,
