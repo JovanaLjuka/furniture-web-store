@@ -14,13 +14,24 @@ const {
 // base route - /api/products
 
 productRouter.get('/all', getAllProducts)
+productRouter.get('/single/:title', getSingleProduct)
 // http://localhost:5002/products/
 
 // productRouter.get('/:query', searchProducts)
 
 // http://localhost:5002/products/search?name=ai
 
-// productRouter.get('/single/:title', getSingleProduct)
+// Filter by material --> http://localhost:5002/api/products/search?material=stone
+// Filter by price --> http://localhost:5002/api/products/search?price=0,500
+
+// Search query --> http://localhost:5002/api/products/search?query=chair
+// we can search by name, company and type
+
+// Sort by price --> http://localhost:5002/api/products/search?sort=price
+// http://localhost:5002/api/products/search?sort=-price, name
+
+// Params: sort, price, query, material
+
 // http://localhost:5002/products/singleProduct/Wish
 
 /*

@@ -51,7 +51,9 @@ const getAllProducts = async (req, res) => {
 
   res.status(200).json({
     products,
-    totalProducts: products.length,
+    totalPages: Math.ceil(count / limit),
+    currentPage: page,
+    totalProducts: count,
     materials,
   })
 }
