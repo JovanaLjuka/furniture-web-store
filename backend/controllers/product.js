@@ -1,67 +1,93 @@
 const Product = require('../models/product')
 
-// for routing
+// GET ALL PRODUCTS / SEARCH AND FILTER
 
 const getAllProducts = async (req, res) => {
-  const { sort, sort_dir, price, query, material, color } = req.query
-  const queryObject = {}
+  const {
+    page = 1,
+    limit = 10,
+    sort,
+    sort_dir,
+    price,
+    query,
+    material,
+    color,
+  } = req.query
 
-  if (query) {
-    queryObject.$or = [
-      { title: { $regex: new RegExp(query, 'i') } },
-      { company: { $regex: new RegExp(query, 'i') } },
-      { type: { $regex: new RegExp(query, 'i') } },
-    ]
-  }
-  if (color) {
-    queryObject.color = color
-  }
+  const allProducts = await Product.find({})
 
-  if (material) {
-    queryObject.material = material
-  }
-
-  const sortOptions = {}
-  if (sort) {
-    sortOptions[sort] = parseInt(sort_dir) || 1
-  }
-  let result = await Product.find(queryObject).sort(sortOptions)
-  if (price) {
-    if (price === '0,500') {
-      result = result.filter(
-        (product) => product.price >= 0 && product.price <= 500
-      )
-    }
-    if (price === '500,1000') {
-      result = result.filter(
-        (product) => product.price >= 500 && product.price <= 1000
-      )
-    }
-  }
-
-  const products = await result
-
+  // send unique material values
   const materialsSet = new Set()
-  products.forEach((product) => {
+  allProducts.forEach((product) => {
     product.material.forEach((material) => {
       materialsSet.add(material)
     })
   })
-  const materials = Array.from(materialsSet)
+  const uniqueMaterials = Array.from(materialsSet)
 
-  res.status(200).json({
-    products,
-    totalPages: Math.ceil(count / limit),
-    currentPage: page,
-    totalProducts: count,
-    materials,
-  })
+  try {
+    const queryObject = {}
+
+    if (query) {
+      queryObject.$or = [
+        { title: { $regex: new RegExp(query, 'i') } },
+        { company: { $regex: new RegExp(query, 'i') } },
+        { type: { $regex: new RegExp(query, 'i') } },
+      ]
+    }
+    if (color) {
+      queryObject.color = color
+    }
+
+    if (material) {
+      queryObject.material = material
+    }
+
+    const sortOptions = {}
+    if (sort) {
+      sortOptions[sort] = parseInt(sort_dir) || 1
+    }
+
+    const options = {
+      sort: sortOptions,
+      page,
+      limit,
+    }
+
+    if (price) {
+      const priceRange = price.split(',')
+      const prices = priceRange.map((strPrice) => parseInt(strPrice))
+      if (prices.length === 2) {
+        queryObject.price = { $gte: prices[0], $lte: prices[1] } // Filter by range
+      } else {
+        // Handle invalid price format (optional)
+        console.warn(
+          'Invalid price format. Please provide price as comma-separated values (e.g., 500,1000)'
+        )
+      }
+    }
+
+    let products = await Product.paginate(queryObject, options)
+
+    res.status(200).json({
+      products: products.docs,
+      totalProducts: products.totalDocs,
+      totalPages: products.totalPages,
+      currentPage: products.page,
+      limit: products.limit,
+      uniqueMaterials,
+    })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'error retrieving products' })
+  }
 }
 
+// GET SINGLE PRODUCT
+
 const getSingleProduct = async (req, res) => {
-  console.log(req.params)
   const productTitle = req.params.title
-  console.log(productTitle)
+
   const product = await Product.findOne({ title: productTitle })
   res.status(200).json({ product })
 }
