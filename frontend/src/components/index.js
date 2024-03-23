@@ -12,3 +12,4 @@ export { default as ProductsList } from './ProductsList';
 export { default as ProductsContainer } from './ProductsContainer';
 export { default as FiltersSection } from './FiltersSection';
 export { default as Pagination } from './Pagination';
+export { default as Loading } from './Loading';

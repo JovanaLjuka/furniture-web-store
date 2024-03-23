@@ -1,29 +1,13 @@
 import React, { useState } from 'react';
-import { Form } from 'react-router-dom';
+import { Form, useLoaderData } from 'react-router-dom';
 
-const SearchInput = ({ handleSearch }) => {
-  const [query, setQuery] = useState('');
-
-  const handleChange = e => {
-    setQuery(e.target.value);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    handleSearch(query);
-  };
+const SearchInput = () => {
+  const { params } = useLoaderData;
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <label className="input input-bordered shadow-md hover:shadow-xl outline-offset-0 flex items-center gap-2">
-        <input
-          type="search"
-          className="grow"
-          name="query"
-          placeholder="Search"
-          value={query}
-          onChange={handleChange}
-        />
+        <input type="search" className="grow" name="query" placeholder="Search" />
         <button type="submit">
           <svg
             xmlns="http://www.w3.org/2000/svg"

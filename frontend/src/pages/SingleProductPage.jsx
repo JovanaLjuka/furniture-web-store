@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { decrease, increase, removeItem } from '../features/CartSlice';
 
-export const loader = async ({ params }) => {
-  const response = await myFetch(`/${params._id}`);
+export const loader = async ({ request, params }) => {
+  const response = await myFetch(`/single/${params.title}`);
   console.log(response);
   const product = response.data.product;
   return { product };
@@ -14,23 +14,20 @@ export const loader = async ({ params }) => {
 
 const SingleProductPage = () => {
   const { product } = useLoaderData();
-  const {
-    name,
-    type,
-    image,
-    designer,
-    description,
-    company,
-    price,
-    color,
-    _id: id,
-    amount,
-  } = product;
-  const [productColor, setProductColor] = useState(color[0]);
+  console.log(product.image);
+  const { title, type, image, designer, description, company, price, color, amount } = product;
+  const imagePathFromServer = product.image; // Assuming the image path is in "image" property
+
+  // Add a leading slash if necessary:
+  const finalImagePath = imagePathFromServer.startsWith('/')
+    ? imagePathFromServer // Already has a leading slash
+    : '/' + imagePathFromServer; // Add a leading slash if missing
+  const [productColor, setProductColor] = useState('');
   const dispatch = useDispatch();
 
   return (
     <section>
+      <img src="" alt="" />
       <div className="text-md breadcrumbs">
         <ul>
           <li>
@@ -44,12 +41,16 @@ const SingleProductPage = () => {
 
       <div className="flex flex-col w-full lg:flex-row mt-6">
         <div className="grid flex-grow card bg-base-300 rounded-box place-items-center">
-          <img src={image} alt={name} className="object-cover rounded-xl w-[500px] h-[480px]" />
+          <img
+            src={finalImagePath}
+            alt={title}
+            className="object-cover rounded-xl w-[500px] h-[480px]"
+          />
         </div>
 
         <div className="grid flex-grow w-[40%] h-32 card bg-base-300 rounded-box my-10">
           <h2 className="my-2">
-            {name} / <span className="text-md">{company}</span>
+            {title} / <span className="text-md">{company}</span>
           </h2>
           <h3 className="text-md capitalize">{type}</h3>
           <p className="my-5">{description}</p>

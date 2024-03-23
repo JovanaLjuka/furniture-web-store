@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         loader: ProductsLoader,
       },
       {
-        path: '/:_id',
+        path: '/single/:title',
         element: <SingleProductPage />,
         errorElement: <Error />,
         loader: SingleProductLoader,
