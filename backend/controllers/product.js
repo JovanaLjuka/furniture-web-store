@@ -55,16 +55,17 @@ const getAllProducts = async (req, res) => {
     }
 
     if (price) {
-      const priceRange = price.split(',')
-      const prices = priceRange.map((strPrice) => parseInt(strPrice))
-      if (prices.length === 2) {
-        queryObject.price = { $gte: prices[0], $lte: prices[1] } // Filter by range
-      } else {
-        // Handle invalid price format (optional)
-        console.warn(
-          'Invalid price format. Please provide price as comma-separated values (e.g., 500,1000)'
-        )
-      }
+      const parsedPrice = parseInt(price)
+      queryObject.price = { $gte: 0, $lte: parsedPrice }
+      // const priceRange = price.split(',')
+      // const prices = priceRange.map((strPrice) => parseInt(strPrice))
+      // if (prices.length === 2) {
+      //   queryObject.price = { $gte: prices[0], $lte: prices[1] }
+      // } else {
+      //   console.warn(
+      //     'Invalid price format. Please provide price as comma-separated values (500,1000)'
+      //   )
+      // }
     }
 
     let products = await Product.paginate(queryObject, options)
@@ -87,7 +88,6 @@ const getAllProducts = async (req, res) => {
 
 const getSingleProduct = async (req, res) => {
   const productTitle = req.params.title
-
   const product = await Product.findOne({ title: productTitle })
   res.status(200).json({ product })
 }

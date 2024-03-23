@@ -11,11 +11,11 @@ const {
 
 // routes
 
-// base route - /api/products
+// base route - http://localhost:5002/
 
 productRouter.get('/all', getAllProducts)
 productRouter.get('/single/:title', getSingleProduct)
-// http://localhost:5002/products/
+//
 
 // productRouter.get('/:query', searchProducts)
 

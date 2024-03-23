@@ -12,7 +12,9 @@ const path = require('path')
 const {
   getAllProducts,
   getSingleProduct,
-  searchProducts,
+  createProduct,
+  updateProduct,
+  deleteProduct,
 } = require('./controllers/product')
 
 const app = express()
