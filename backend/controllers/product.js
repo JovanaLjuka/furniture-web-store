@@ -39,7 +39,6 @@ const getAllProducts = async (req, res) => {
     }
   }
 
-  console.log('sort_dir:', req.query.sort_dir)
   const products = await result
 
   const materialsSet = new Set()
