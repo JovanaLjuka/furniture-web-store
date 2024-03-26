@@ -1,5 +1,7 @@
 const User = require('../models/user')
-const { addCookiesToResponse } = require('../utils')
+const { addCookiesToResponse, createTokenUser } = require('../utils')
+
+// REGISTER
 
 const register = async (req, res) => {
   const { email, username, password } = req.body
@@ -8,25 +10,44 @@ const register = async (req, res) => {
   const role = firstAdmin ? 'admin' : 'user'
 
   const user = await User.create({ username, email, password, role })
-  const tokenUser = {
-    username: user.username,
-    userId: user._id,
-    role: user.role,
-  }
+  const tokenUser = createTokenUser(user)
 
   addCookiesToResponse({ res, user: tokenUser })
-
-  console.log(req.signedCookies)
 
   res.status(201).json({ user: tokenUser })
 }
 
+// LOGIN
+
 const login = async (req, res) => {
-  res.send('login user')
+  const { email, password } = req.body
+  if (!email || !password) {
+    throw new Error('Please provide email and password')
+  }
+  const user = await User.findOne({ email })
+
+  if (!user) {
+    throw new Error('Invalid credentials')
+  }
+
+  const isPasswordCorrect = await user.comparePassword(password)
+  if (!isPasswordCorrect) {
+    throw new Error('Invalid credentials')
+  }
+  const tokenUser = createTokenUser(user)
+  addCookiesToResponse({ res, user: tokenUser })
+
+  res.status(200).json({ user: tokenUser })
 }
 
+// LOGOUT
+
 const logout = async (req, res) => {
-  res.send('logout user')
+  res.cookie('token', 'logout', {
+    httpOnly: true,
+    expires: new Date(Date.now() + 5 * 1000),
+  })
+  res.status(200).json({ msg: 'user logged out' })
 }
 
 module.exports = { register, login, logout }
