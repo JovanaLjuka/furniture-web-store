@@ -1,4 +1,5 @@
 const Product = require('../models/product')
+const path = require('path')
 
 // GET ALL PRODUCTS / SEARCH AND FILTER
 
@@ -84,30 +85,77 @@ const getAllProducts = async (req, res) => {
 const getSingleProduct = async (req, res) => {
   const productTitle = req.params.title
   const product = await Product.findOne({ title: productTitle })
+
+  if (!product) {
+    throw new Error(`No product with name: ${productTitle} found`)
+  }
+
   res.status(200).json({ product })
 }
 
 // CREATE PRODUCT
 
 const createProduct = async (req, res) => {
+  req.body.user = req.user.userId
   const product = await Product.create(req.body)
   res.status(200).json(product)
+}
+
+// UPLOAD IMAGE
+
+const uploadImage = async (req, res) => {
+  if (!req.files) {
+    throw new Error('No file uploaded')
+  }
+
+  const productImage = req.files.image
+
+  if (!productImage.mimetype.startsWith('image')) {
+    throw new Error('Please provide image')
+  }
+
+  const maxSize = 1024 * 1024
+
+  if (productImage.size > maxSize) {
+    throw new Error('Your image is too big.')
+  }
+
+  const imagePath = path.join(
+    __dirname,
+    '../public/uploads/' + `${productImage.name}`
+  )
+
+  await productImage.mv(imagePath)
+  res
+    .status(200)
+    .json({ image: `/uploads/${productImage.name} successfully uploaded` })
 }
 
 // UPDATE PRODUCT
 
 const updateProduct = async (req, res) => {
-  const { id } = req.params
-  const product = await Product.findByIdAndUpdate(id, req.body)
-  const updatedProduct = await Product.findById(id)
-  res.status(200).json(updatedProduct)
+  const { id: productId } = req.params
+  const updatedProduct = await Product.findByIdAndUpdate(productId, req.body, {
+    new: true,
+    runValidators: true,
+  })
+
+  if (!updateProduct) {
+    throw new Error(`No product with id: ${productId} found`)
+  }
+
+  res.status(200).json({ updatedProduct })
 }
 
 // DELETE PRODUCT
 
 const deleteProduct = async (req, res) => {
-  const { id } = req.params
-  const product = await Product.findByIdAndDelete(id)
+  const { id: productId } = req.params
+  const product = await Product.findByIdAndDelete(productId)
+
+  if (!product) {
+    throw new CustomError.NotFoundError(`No product with id : ${productId}`)
+  }
   res.status(200).json({ message: 'Product deleted' })
 }
 
@@ -115,6 +163,7 @@ module.exports = {
   getAllProducts,
   getSingleProduct,
   createProduct,
+  uploadImage,
   updateProduct,
   deleteProduct,
 }

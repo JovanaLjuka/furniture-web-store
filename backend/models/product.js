@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    required: true,
+    default: '/uploads/sofa.png',
   },
   description: {
     type: String,
@@ -32,7 +32,7 @@ const productSchema = new mongoose.Schema({
   },
   company: {
     type: String,
-    enum: ['Kelly Wearstler', 'Molteni&C'],
+    enum: ['Kelly Wearstler', 'Molteni&C', 'Giorgetti'],
   },
   designer: {
     type: String,
@@ -49,6 +49,11 @@ const productSchema = new mongoose.Schema({
   quantity: {
     type: Number,
     default: 50,
+  },
+  user: {
+    type: mongoose.Types.ObjectId,
+    ref: 'User',
+    required: true,
   },
 })
 

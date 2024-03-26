@@ -13,13 +13,7 @@ const errorMiddleware = require('./middleware/error-middleware')
 const notFoundMiddleware = require('./middleware/not-found-middleware')
 const path = require('path')
 const cookieParser = require('cookie-parser')
-const {
-  getAllProducts,
-  getSingleProduct,
-  createProduct,
-  updateProduct,
-  deleteProduct,
-} = require('./controllers/product')
+const fileUpload = require('express-fileupload')
 
 const app = express()
 const port = process.env.PORT || 5002
@@ -30,6 +24,8 @@ app.use(express.json())
 app.use(cors())
 
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(fileUpload())
+
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser(process.env.JWT_SECRET))
 

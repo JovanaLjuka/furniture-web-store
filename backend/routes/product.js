@@ -2,9 +2,15 @@ const express = require('express')
 const productRouter = express.Router()
 
 const {
+  authenticateUser,
+  authorizePermissions,
+} = require('../middleware/authenticate')
+
+const {
   getAllProducts,
   getSingleProduct,
   createProduct,
+  uploadImage,
   updateProduct,
   deleteProduct,
 } = require('../controllers/product')
@@ -50,10 +56,27 @@ http://localhost:5002/products/search?type=chair&page=2
 http://localhost:5002/products/search?priceFilter=0,500
 */
 
-productRouter.post('/', createProduct)
+productRouter.post(
+  '/',
+  [authenticateUser, authorizePermissions('admin')],
+  createProduct
+)
+productRouter.post(
+  '/uploadImage',
+  [authenticateUser, authorizePermissions('admin')],
+  uploadImage
+)
 
-productRouter.put('/:id', updateProduct)
+productRouter.put(
+  '/:id',
+  [authenticateUser, authorizePermissions('admin')],
+  updateProduct
+)
 
-productRouter.delete('/:id', deleteProduct)
+productRouter.delete(
+  '/:id',
+  [authenticateUser, authorizePermissions('admin')],
+  deleteProduct
+)
 
 module.exports = productRouter
