@@ -1,14 +1,18 @@
 require('dotenv').config()
+
+// require package, for using error handler middlewares
 require('express-async-errors')
 
 const express = require('express')
 const cors = require('cors')
 const connectDB = require('./db/connect')
 const productRouter = require('./routes/product')
+const authRouter = require('./routes/auth')
+const userRouter = require('./routes/user')
 const errorMiddleware = require('./middleware/error-middleware')
 const notFoundMiddleware = require('./middleware/not-found-middleware')
 const path = require('path')
-
+const cookieParser = require('cookie-parser')
 const {
   getAllProducts,
   getSingleProduct,
@@ -20,31 +24,29 @@ const {
 const app = express()
 const port = process.env.PORT || 5002
 
+// middleware
+
 app.use(express.json())
 app.use(cors())
 
-// middleware
-app.use('/', productRouter)
-app.use(errorMiddleware)
-app.use(notFoundMiddleware)
-
 app.use(express.static(path.join(__dirname, 'public')))
-
 app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser(process.env.JWT_SECRET))
 
-// // route handlers
-// app.get('/', (req, res) => {
-//   res.send('<h1>Store API</h1><a href="/products">products route</a>')
-// })
+// base routes
 
-// route for getting all products
-// app.get('/products', productRouter)
+app.use('/', productRouter)
+app.use('/auth', authRouter)
+// app.use('/users', userRouter)
 
-// // route for getting a single product
-// app.get('/products/:name', getSingleProduct)
+app.get('/testingroute', (req, res) => {
+  console.log(req.signedCookies)
+  res.send('testing')
+})
 
-// // route for searching products by query
-// app.get('/products/search/:query', searchProducts)
+// Error handling middlewares
+app.use(notFoundMiddleware)
+app.use(errorMiddleware)
 
 const startServer = async () => {
   try {
