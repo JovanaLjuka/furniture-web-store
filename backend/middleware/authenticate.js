@@ -7,8 +7,8 @@ const authenticateUser = async (req, res, next) => {
   }
 
   try {
-    const { name, userId, role } = isTokenValid({ token })
-    req.user = { name, userId, role }
+    const { username, userId, role } = isTokenValid({ token })
+    req.user = { username, userId, role }
     next()
   } catch (error) {
     throw new Error('Token invalid')
@@ -18,7 +18,7 @@ const authenticateUser = async (req, res, next) => {
 const authorizePermissions = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-      throw new Error('Unathorizes access')
+      throw new Error('Unathorized access')
     }
     next()
   }

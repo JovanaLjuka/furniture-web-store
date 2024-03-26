@@ -1,34 +1,44 @@
-// const express = require('express')
-// const userRouter = express.Router()
+const express = require('express')
+const userRouter = express.Router()
 
-// const {
-//   getAllUsers,
-//   getSingleUser,
-//   showUser,
-//   updatePassword,
-//   updateUser,
-// } = require('../controllers/user')
+const {
+  getAllUsers,
+  getSingleUser,
+  showUser,
+  updatePassword,
+  updateUser,
+} = require('../controllers/user')
 
-// const {
-//   authenticateUser,
-//   authorizePermissions,
-// } = require('../middleware/authenticate')
+const {
+  authenticateUser,
+  authorizePermissions,
+} = require('../middleware/authenticate')
 
-// // base route - http://localhost:5002/users
+// base route - http://localhost:5002/users
 
-// userRouter.get(
-//   '/allusers',
-//   authenticateUser,
-//   authorizePermissions('admin'),
-//   getAllUsers
-// )
+userRouter.get(
+  '/allusers',
+  authenticateUser,
+  authorizePermissions('admin'),
+  getAllUsers
+)
 
-// userRouter.get('/showUser', authenticateUser, showUser)
+userRouter.get(
+  '/showUser',
+  authenticateUser,
+  authorizePermissions('admin'),
+  showUser
+)
 
-// userRouter.patch('/updateUser', authenticateUser, updateUser)
+userRouter.patch('/updateUser', authenticateUser, updateUser)
 
-// userRouter.patch('/updatePassword', authenticateUser, updatePassword)
+userRouter.patch('/updatePassword', authenticateUser, updatePassword)
 
-// userRouter.get('/:id', authenticateUser, getSingleUser)
+userRouter.get(
+  '/:id',
+  authenticateUser,
+  authorizePermissions('admin'),
+  getSingleUser
+)
 
-// module.exports = userRouter
+module.exports = userRouter

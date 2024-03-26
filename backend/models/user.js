@@ -32,7 +32,9 @@ const userSchema = new mongoose.Schema({
 // Ensure secure password storage by hashing passwords before saving them to db
 
 userSchema.pre('save', async function () {
-  // if (!this.isModified('password')) return
+  // make sure if user is not modifying password, we're not hashing the password
+  // again, bc in that case we will have bugs
+  if (!this.isModified('password')) return
   const salt = await bcrypt.genSalt(10)
   this.password = await bcrypt.hash(this.password, salt)
 })

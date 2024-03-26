@@ -37,7 +37,7 @@ app.use(cookieParser(process.env.JWT_SECRET))
 
 app.use('/', productRouter)
 app.use('/auth', authRouter)
-// app.use('/users', userRouter)
+app.use('/users', userRouter)
 
 app.get('/testingroute', (req, res) => {
   console.log(req.signedCookies)
