@@ -1,6 +1,8 @@
-import axios from 'axios';
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import {
   AboutPage,
   CartPage,
@@ -22,11 +24,7 @@ import { Error } from './components';
 import { loader as ProductsLoader } from './pages/ProductsPage';
 import { loader as SingleProductLoader } from './pages/SingleProductPage';
 
-// const apiCall = () => {
-//   axios.get('http://localhost:5002/products').then((response) => {
-//     console.log(response.data)
-//   })
-// }
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -82,7 +80,12 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 };
 
 export default App;

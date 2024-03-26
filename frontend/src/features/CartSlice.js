@@ -1,12 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 import { myFetch } from '../utils';
 
 const url = '/';
 const initialState = {
   cartItems: [],
+  totalItems: 0,
+  cartTotal: 0,
   amount: 0,
   isLoading: true,
+};
+
+const getCartFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('cart')) || initialState;
 };
 
 export const getCartItems = createAsyncThunk('cart/getCartItems', async (name, thunkAPI) => {
@@ -20,40 +27,78 @@ export const getCartItems = createAsyncThunk('cart/getCartItems', async (name, t
 
 const cartSlice = createSlice({
   name: 'cart',
-  initialState,
+  initialState: getCartFromLocalStorage(),
   reducers: {
-    increase: (state, { payload }) => {
-      console.log(state);
-      console.log(payload);
-      const cartItem = state.cartItems.find(item => item._id === payload.id);
-      console.log(cartItem);
-      cartItem.amount = cartItem.amount += 1;
-    },
-    decrease: (state, { payload }) => {
-      const cartItem = state.cartItems.find(item => item._id === payload.id);
-      cartItem.amount = cartItem.amount -= 1;
+    addItem: (state, action) => {
+      console.log(action.payload);
+      const { product } = action.payload;
+      const item = state.cartItems.find(item => item.cartId === product.cartId);
+      if (item) {
+        item.amount += product.amount;
+      } else {
+        state.cartItems.push(product);
+      }
+      state.totalItems += product.amount;
+      state.cartTotal += product.price * product.amount;
+      localStorage.setItem('cart', JSON.stringify(state));
+      toast.success('Added to cart');
     },
     removeItem: (state, action) => {
-      const itemId = action.payload;
-      state.cartItems = state.cartItems.filter(item => item._id !== itemId);
+      const { cartId } = action.payload;
+      const product = state.cartItems.find(item => item.cartId === cartId);
+      state.cartItems = state.cartItems.filter(item => item.cartId !== cartId);
+      state.totalItems -= product.amount;
+      state.cartTotal -= product.price * product.amount;
+      localStorage.setItem('cart', JSON.stringify(state));
+      toast.error('Item removed from cart');
+    },
+    increase: (state, action) => {
+      const { cartId } = action.payload;
+      const product = state.cartItems.find(item => item.cartId === cartId);
+      if (product) {
+        product.amount += 1;
+        state.totalItems += 1;
+        state.cartTotal += product.price;
+        localStorage.setItem('cart', JSON.stringify(state));
+        toast.success('Increased amount');
+      }
+    },
+    decrease: (state, action) => {
+      const { cartId } = action.payload;
+      const product = state.cartItems.find(item => item.cartId === cartId);
+      if (product && product.amount > 1) {
+        product.amount -= 1;
+        state.totalItems -= 1;
+        state.cartTotal -= product.price;
+        localStorage.setItem('cart', JSON.stringify(state));
+        toast.success('Decreased amount');
+      }
+    },
+
+    clearCart: state => {
+      state.cartItems = [];
+      state.totalItems = 0;
+      state.cartTotal = 0;
+      localStorage.setItem('cart', JSON.stringify(initialState));
+      return initialState;
     },
   },
-  extraReducers: builder => {
-    builder
-      .addCase(getCartItems.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(getCartItems.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.cartItems = action.payload;
-      })
-      .addCase(getCartItems.rejected, (state, action) => {
-        console.log(action);
-        state.isLoading = false;
-      });
-  },
+  // extraReducers: builder => {
+  //   builder
+  //     .addCase(getCartItems.pending, state => {
+  //       state.isLoading = true;
+  //     })
+  //     .addCase(getCartItems.fulfilled, (state, action) => {
+  //       state.isLoading = false;
+  //       state.cartItems = action.payload;
+  //     })
+  //     .addCase(getCartItems.rejected, (state, action) => {
+  //       console.log(action);
+  //       state.isLoading = false;
+  //     });
+  // },
 });
 
-export const { increase, decrease, removeItem } = cartSlice.actions;
+export const { addItem, increase, decrease, removeItem, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

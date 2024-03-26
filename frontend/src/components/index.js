@@ -13,3 +13,6 @@ export { default as ProductsContainer } from './ProductsContainer';
 export { default as FiltersSection } from './FiltersSection';
 export { default as Pagination } from './Pagination';
 export { default as Loading } from './Loading';
+export { default as CartItem } from './CartItem';
+export { default as CartList } from './CartList';
+export { default as CartTotal } from './CartTotal';

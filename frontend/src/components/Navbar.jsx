@@ -6,7 +6,7 @@ import { NavLinks } from '../components';
 import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-  const { amount } = useSelector(store => store.cart);
+  const totalItems = useSelector(state => state.cart.totalItems);
   return (
     <nav className="bg-khaki-50 w-screen navbar align-elements m-0 font-color font-style">
       <div className="navbar-start font-style">
@@ -38,7 +38,7 @@ const Navbar = () => {
         <NavLink to="cart" className="btn btn-ghost btn-circle btn-md mx-5">
           <div className="cart-icon indicator">
             <GiShoppingCart className="h-10 w-10 text-lavander-400" />
-            <span className="badge badge-sm indicator-item">{amount}</span>
+            <span className="badge badge-sm indicator-item">{totalItems}</span>
           </div>
         </NavLink>
       </div>

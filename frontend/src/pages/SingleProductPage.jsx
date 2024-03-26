@@ -2,8 +2,8 @@ import { useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
 import { myFetch } from '../utils';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { decrease, increase, removeItem } from '../features/CartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, increase, decrease, removeItem } from '../features/CartSlice';
 
 export const loader = async ({ request, params }) => {
   const response = await myFetch(`/single/${params.title}`);
@@ -14,16 +14,30 @@ export const loader = async ({ request, params }) => {
 
 const SingleProductPage = () => {
   const { product } = useLoaderData();
-  console.log(product.image);
-  const { title, type, image, designer, description, company, price, color, amount } = product;
-  const imagePathFromServer = product.image; // Assuming the image path is in "image" property
+  const { title, type, image, designer, description, company, price, color, _id, amount } = product;
+  const imagePathFromServer = product.image;
 
-  // Add a leading slash if necessary:
   const finalImagePath = imagePathFromServer.startsWith('/')
-    ? imagePathFromServer // Already has a leading slash
-    : '/' + imagePathFromServer; // Add a leading slash if missing
+    ? imagePathFromServer
+    : '/' + imagePathFromServer;
   const [productColor, setProductColor] = useState('');
+
+  const cartProduct = {
+    cartId: _id + productColor,
+    productId: _id,
+    image,
+    title,
+    price,
+    company,
+    color,
+    amount,
+  };
+
   const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(addItem({ product: cartProduct }));
+  };
 
   return (
     <section>
@@ -78,14 +92,17 @@ const SingleProductPage = () => {
             </div>
           </div>
           <div className="flex flex-row">
-            <button className="border-2 w-[200px] p-3 my-5 shadow-md hover:shadow-xl hover:outline-offset-4 mr-4 float-right mx-0">
+            <button
+              onClick={addToCart}
+              className="border-2 w-[200px] p-3 my-5 shadow-md hover:shadow-xl hover:outline-offset-4 mr-4 float-right mx-0"
+            >
               Add to cart
             </button>
-            <div className="flex flex-col m-0 p-0 h-[50px] mt-5 border-2 divide-y-2 divide-solid shadow-md hover:shadow-xl hover:outline-offset-4">
+            {/* <div className="flex flex-col m-0 p-0 h-[50px] mt-5 border-2 divide-y-2 divide-solid shadow-md hover:shadow-xl hover:outline-offset-4">
               <button
                 className="w-[25px] h-[25px] text-sm font-md"
                 onClick={() => {
-                  dispatch(increase({ id }));
+                  dispatch(increase({ _id }));
                 }}
               >
                 +
@@ -94,16 +111,16 @@ const SingleProductPage = () => {
                 className="w-[25px] h-[25px] text-sm font-md"
                 onClick={() => {
                   if (amount === 1) {
-                    dispatch(removeItem(id));
+                    dispatch(removeItem(_id));
                     return;
                   }
-                  dispatch(decrease({ id }));
+                  dispatch(decrease({ _id }));
                 }}
               >
                 -
               </button>
             </div>
-            <p>{amount}</p>
+              <p className="flex w-5 place-content-center items-center text-xl ml-5 ">{amount}</p>*/}
           </div>
         </div>
       </div>
