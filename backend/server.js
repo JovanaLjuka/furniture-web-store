@@ -21,7 +21,7 @@ const port = process.env.PORT || 5002
 // middleware
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(fileUpload())
@@ -35,10 +35,10 @@ app.use('/', productRouter)
 app.use('/auth', authRouter)
 app.use('/users', userRouter)
 
-app.get('/testingroute', (req, res) => {
-  console.log(req.signedCookies)
-  res.send('testing')
-})
+// app.get('/testingroute', (req, res) => {
+//   console.log(req.signedCookies)
+//   res.send('testing')
+// })
 
 // Error handling middlewares
 app.use(notFoundMiddleware)

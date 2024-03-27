@@ -1,5 +1,6 @@
 const User = require('../models/user')
 const { addCookiesToResponse, createTokenUser } = require('../utils')
+const bcrypt = require('bcryptjs')
 
 // REGISTER
 

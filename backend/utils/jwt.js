@@ -32,8 +32,9 @@ const addCookiesToResponse = ({ res, user }) => {
   res.cookie('token', token, {
     httpOnly: true,
     expires: new Date(Date.now() + oneDay),
-    // set up secure: true, once production is finished, which marks th=e cookie to be used with HTTPS only
+    // set up secure: true, once production is finished, which marks the cookie to be used with HTTPS only
     secure: process.env.NODE_ENV === 'production',
+    secure: false,
     signed: true,
   })
 }
