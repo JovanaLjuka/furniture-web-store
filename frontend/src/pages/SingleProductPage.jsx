@@ -98,29 +98,7 @@ const SingleProductPage = () => {
             >
               Add to cart
             </button>
-            {/* <div className="flex flex-col m-0 p-0 h-[50px] mt-5 border-2 divide-y-2 divide-solid shadow-md hover:shadow-xl hover:outline-offset-4">
-              <button
-                className="w-[25px] h-[25px] text-sm font-md"
-                onClick={() => {
-                  dispatch(increase({ _id }));
-                }}
-              >
-                +
-              </button>
-              <button
-                className="w-[25px] h-[25px] text-sm font-md"
-                onClick={() => {
-                  if (amount === 1) {
-                    dispatch(removeItem(_id));
-                    return;
-                  }
-                  dispatch(decrease({ _id }));
-                }}
-              >
-                -
-              </button>
-            </div>
-              <p className="flex w-5 place-content-center items-center text-xl ml-5 ">{amount}</p>*/}
+            
           </div>
         </div>
       </div>

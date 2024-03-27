@@ -16,14 +16,14 @@ const getCartFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem('cart')) || initialState;
 };
 
-export const getCartItems = createAsyncThunk('cart/getCartItems', async (name, thunkAPI) => {
-  try {
-    const response = await myFetch(url);
-    return response.data.products;
-  } catch (error) {
-    return thunkAPI.rejectWithValue('something went wrong');
-  }
-});
+// export const getCartItems = createAsyncThunk('cart/getCartItems', async (name, thunkAPI) => {
+//   try {
+//     const response = await myFetch(url);
+//     return response.data.products;
+//   } catch (error) {
+//     return thunkAPI.rejectWithValue('something went wrong');
+//   }
+// });
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -80,7 +80,7 @@ const cartSlice = createSlice({
       state.totalItems = 0;
       state.cartTotal = 0;
       localStorage.setItem('cart', JSON.stringify(initialState));
-      return initialState;
+      // return initialState;
     },
   },
   // extraReducers: builder => {

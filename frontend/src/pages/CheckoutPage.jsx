@@ -1,5 +1,8 @@
-const CheckoutPage = () => {
-  return <div>CheckoutPage</div>
-}
+import { UseSelector } from 'react-redux';
+import { CheckoutForm, CartTotal } from '../components';
 
-export default CheckoutPage
+const CheckoutPage = () => {
+  return <div>CheckoutPage</div>;
+};
+
+export default CheckoutPage;

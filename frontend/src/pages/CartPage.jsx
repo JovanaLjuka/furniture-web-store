@@ -3,7 +3,8 @@ import { CartTotal, CartList } from '../components';
 import { Link } from 'react-router-dom';
 
 const CartPage = () => {
-  const user = null;
+  const user = useSelector(state => state.user.user);
+
   const total = useSelector(state => state.cart.CartTotal);
 
   if (total === 0) {

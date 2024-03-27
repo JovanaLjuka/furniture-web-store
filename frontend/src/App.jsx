@@ -24,6 +24,12 @@ import { Error } from './components';
 import { loader as ProductsLoader } from './pages/ProductsPage';
 import { loader as SingleProductLoader } from './pages/SingleProductPage';
 
+// actions
+
+import { action as RegisterAction } from './pages/RegisterPage';
+import { action as LoginAction } from './pages/LoginPage';
+import { store } from './store';
+
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -71,11 +77,13 @@ const router = createBrowserRouter([
     path: '/login',
     element: <LoginPage />,
     errorElement: <ErrorPage />,
+    action: LoginAction(store),
   },
   {
     path: '/register',
     element: <RegisterPage />,
     errorElement: <ErrorPage />,
+    action: RegisterAction,
   },
 ]);
 
