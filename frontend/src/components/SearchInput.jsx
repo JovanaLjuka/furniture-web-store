@@ -6,7 +6,7 @@ const SearchInput = () => {
 
   return (
     <Form>
-      <label className="input input-bordered shadow-md hover:shadow-xl outline-offset-0 flex items-center gap-2">
+      <label className="input input-bordered shadow-md hover:shadow-xl outline-offset-0 flex  gap-2 w-[50%] lg:w-[100%]">
         <input type="search" className="grow" name="query" placeholder="Search" />
         <button type="submit">
           <svg

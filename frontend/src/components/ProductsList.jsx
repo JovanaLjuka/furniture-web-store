@@ -19,8 +19,10 @@ const ProductsList = () => {
                 alt={title}
                 className="h-[200px] w-[200px] rounded-lg  object-cover group-hover:scale-105 duration-300"
               />
-              <div className="ml-0 sm:ml-16">
-                <h2 className="capitalize tracking-wider font-medium p-0">{title}</h2>
+              <div className="ml-0 sm:ml-10 lg:ml-16">
+                <h2 className="capitalize tracking-wider text-sm lg:text-xl font-medium p-0">
+                  {title}
+                </h2>
                 <h2 className="capitalize text-sm tracking-wider my-2 text-neutral-content">
                   {company}
                 </h2>

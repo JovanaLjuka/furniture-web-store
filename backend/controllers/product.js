@@ -6,7 +6,7 @@ const path = require('path')
 const getAllProducts = async (req, res) => {
   const {
     page = 1,
-    limit = 10,
+    limit = 9,
     sort,
     sort_dir,
     price,

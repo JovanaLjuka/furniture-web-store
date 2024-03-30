@@ -4,12 +4,12 @@ import SearchInput from './SearchInput';
 
 const FiltersSection = () => {
   return (
-    <div className="flex justify-between align-elements w-[85%] text-brown-900 mb-5">
-      <div className=" w-[600px] grid grid-rows-1 grid-flow-col gap-2">
+    <div className="md:flex md:flex-col sm:gap-y-3 lg:grid lg:grid-row-1 lg:grid-flow-col lg:justify-between align-elements w-[85%] text-brown-900 mb-5">
+      <div className="md:flex md:flex-col lg:grid lg:grid-row-1 lg:grid-flow-col max-w-[600px] gap-2">
         <FilterOptions />
       </div>
 
-      <div>
+      <div className="mt-3">
         <SearchInput />
       </div>
     </div>

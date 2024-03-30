@@ -3,9 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { clearCart } from '../features/CartSlice';
 import { logoutUser } from '../features/UserSlice';
 import axios from 'axios';
-import { store } from '../store';
-import { current } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 
 const url = 'http://localhost:5002/auth/logout';
 
@@ -13,21 +10,21 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const LinUser = useSelector(state => state.user.user);
-  console.log(LinUser);
 
-  const currentState = store.getState();
-  console.log(currentState);
-  console.log(current);
+  // console.log(LinUser);
 
-  const handleLogout = () => {
+  // const currentState = store.getState();
+  // console.log(currentState);
+  // console.log(current);
+
+  const handleLogout = async () => {
     navigate('/');
-    // await axios.get(url);
+    await axios.get(url);
     dispatch(clearCart());
     dispatch(logoutUser());
-    toast.success('Logged out successfully');
   };
   return (
-    <header className="bg-khaki-100 w-full py-2 text-neutral-content">
+    <header className="bg-[#aeb9d1bb] w-full py-2 text-neutral-content">
       <div className="align-elements flex justify-center sm:justify-end">
         {LinUser ? (
           <div className="flex gap-x-2 sm:gap-x-8 items-center">

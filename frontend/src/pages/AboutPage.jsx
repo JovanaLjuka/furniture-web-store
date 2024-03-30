@@ -9,11 +9,11 @@ import img7 from '../assets/Images/table.jpg';
 import { NavLink } from 'react-router-dom';
 const Aboutpage = () => {
   return (
-    <div className="relative  flex flex-row md:flex-wrap mx-10 font-color py-10">
+    <div className="relative mx-10 font-color py-10">
       <div>
         <div className="relative mx-10 items-center justify-between max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
-            <h1 className="mb-12 font text-4xl font-extralight tracking-tight sm:text-6xl font-ojuju  text-lavander-300">
+            <h1 className="mb-12 font text-4xl font-extralight tracking-tight sm:text-6xl font-ojuju  text-[#99b1e0]">
               Urban Furniture Concept Store
             </h1>
             <p className="mt-4 text-xl ">
@@ -33,10 +33,10 @@ const Aboutpage = () => {
               pieces to elevate your urban oasis.
             </p>
             <div className="mt-8">
-              <NavLink to="products">
+              <NavLink to="/products">
                 <button
                   type="button"
-                  className="btn items-center text-base p-2 rounded-md border border-transparent bg-lavander-200 py-3 px-8 text-center font-medium text-white hover:bg-lavander-100"
+                  className="btn items-center text-base p-2 rounded-md border border-[#8096c2] bg-[#9fadc7] py-3 px-8 text-center font-medium text-white hover:bg-[#a6bae2]"
                 >
                   Shop now
                 </button>

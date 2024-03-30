@@ -1,9 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-import { myFetch } from '../utils';
-
-const url = '/';
 const initialState = {
   cartItems: [],
   totalItems: 0,
@@ -15,15 +12,6 @@ const initialState = {
 const getCartFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem('cart')) || initialState;
 };
-
-// export const getCartItems = createAsyncThunk('cart/getCartItems', async (name, thunkAPI) => {
-//   try {
-//     const response = await myFetch(url);
-//     return response.data.products;
-//   } catch (error) {
-//     return thunkAPI.rejectWithValue('something went wrong');
-//   }
-// });
 
 const cartSlice = createSlice({
   name: 'cart',

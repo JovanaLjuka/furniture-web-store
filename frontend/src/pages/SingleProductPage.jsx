@@ -2,12 +2,12 @@ import { useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
 import { myFetch } from '../utils';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { addItem, increase, decrease, removeItem } from '../features/CartSlice';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/CartSlice';
 
 export const loader = async ({ request, params }) => {
   const response = await myFetch(`/single/${params.title}`);
-  console.log(response);
+  // console.log(response);
   const product = response.data.product;
   return { product };
 };
@@ -15,11 +15,13 @@ export const loader = async ({ request, params }) => {
 const SingleProductPage = () => {
   const { product } = useLoaderData();
   const { title, type, image, designer, description, company, price, color, _id, amount } = product;
-  const imagePathFromServer = product.image;
 
-  const finalImagePath = imagePathFromServer.startsWith('/')
-    ? imagePathFromServer
-    : '/' + imagePathFromServer;
+  // const imagePathFromServer = product.image;
+
+  // const finalImagePath = imagePathFromServer.startsWith('/')
+  //   ? imagePathFromServer
+  //   : '/' + imagePathFromServer;
+
   const [productColor, setProductColor] = useState('');
 
   const cartProduct = {
@@ -55,11 +57,7 @@ const SingleProductPage = () => {
 
       <div className="flex flex-col w-full lg:flex-row mt-6">
         <div className="grid flex-grow card bg-base-300 rounded-box place-items-center">
-          <img
-            src={finalImagePath}
-            alt={title}
-            className="object-cover rounded-xl w-[500px] h-[480px]"
-          />
+          <img src={image} alt={title} className="object-cover rounded-xl w-[500px] h-[480px]" />
         </div>
 
         <div className="grid flex-grow w-[40%] h-32 card bg-base-300 rounded-box my-10">
@@ -98,7 +96,6 @@ const SingleProductPage = () => {
             >
               Add to cart
             </button>
-            
           </div>
         </div>
       </div>

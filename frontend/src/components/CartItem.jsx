@@ -20,10 +20,13 @@ const CartItem = ({ cartItem }) => {
   const { cartId, title, price, image, amount, company, productColor } = cartItem;
 
   return (
-    <article key={cartId} className=" w-[100%] h-[200px] flex flex-col sm:flex-row flex-wrap">
-      <img src={image} alt={title} className=" rounded-lg w-[20%] h-full object-cover" />
+    <article key={cartId} className="max-w-[100%] max-h-[200px] flex justify-center flex-row mb-5 ">
+      <div className="w-80 h-80 flex justify-center">
+        <img src={image} alt={title} className="rounded-lg w-[70%] h-[60%] object-cover" />
+      </div>
+
       <div className="mx-10 ">
-        <h3 className="capitalize font-medium">{title}</h3>
+        <h3 className="capitalize font-medium text">{title}</h3>
 
         <h4 className="mt-2 capitalize text-sm text-neutral-content">{company}</h4>
 

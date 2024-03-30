@@ -11,7 +11,6 @@ import {
   HomePage,
   LandingPage,
   LoginPage,
-  OrdersPage,
   ProductsPage,
   RegisterPage,
   SingleProductPage,
@@ -23,6 +22,7 @@ import { Error } from './components';
 
 import { loader as ProductsLoader } from './pages/ProductsPage';
 import { loader as SingleProductLoader } from './pages/SingleProductPage';
+import { loader as CheckoutLoader } from './pages/CheckoutPage';
 
 // actions
 
@@ -66,10 +66,7 @@ const router = createBrowserRouter([
       {
         path: 'checkout',
         element: <CheckoutPage />,
-      },
-      {
-        path: 'orders',
-        element: <OrdersPage />,
+        loader: CheckoutLoader(store),
       },
     ],
   },
@@ -91,7 +88,6 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };

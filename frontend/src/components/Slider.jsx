@@ -32,7 +32,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="w-full max-w-[1200px] h-[550px]  m-auto py-5 px-4 relative group">
+    <div className="w-full h-auto max-w-[1200px] max-h-[550px] m-auto py-5 px-4 relative group xl:mb-52">
       <div className="w-full h-full rounded-2xl bg-center bg-cover duration-500 relative flex items-center justify-center">
         <img src={sliderImages[currentIndex]} alt="slider" className="w-full h-full"></img>
         <Link

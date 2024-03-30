@@ -12,12 +12,12 @@ const Navbar = () => {
       <div className="navbar-start font-style">
         <NavLink
           to="/"
-          className="hidden lg:flex btn text-4xl font-ojuju border-none text-khaki-200 items-center tracking-[1.4rem] font-extralight"
+          className="hidden lg:flex ml-4 text-4xl p-1 font-ojuju border-none text-[#7b97cec7] items-center tracking-[1.4rem] font-extralight"
         >
-          <GiSofa /> <span className="ml-2">UFCS</span>
+          <GiSofa className="text-4xl" /> <span className="ml-2">UFCS</span>
         </NavLink>
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-outline lg:hidden">
             <HiBars3 className="m-2 text-3xl" />
           </div>
           <ul
@@ -35,7 +35,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <NavLink to="cart" className="btn btn-ghost btn-circle btn-md mx-5">
+        <NavLink to="cart" className="btn btn-ghost btn-circle btn-md mx-5 cursor-pointer">
           <div className="cart-icon indicator">
             <GiShoppingCart className="h-10 w-10 text-lavander-400" />
             <span className="badge badge-sm indicator-item">{totalItems}</span>

@@ -28,7 +28,7 @@ export const action =
       };
       const response = await axios.post(`${url}`, data, config);
       store.dispatch(loginUser(response.data.user));
-      console.log(response);
+      // console.log(response);
       toast.success('Login successful');
       return redirect('/');
     } catch (error) {
@@ -39,8 +39,8 @@ export const action =
     }
   };
 const LoginPage = () => {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     // handleSubmit,
@@ -56,26 +56,26 @@ const LoginPage = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  // const guestUser = async () => {
-  //   try {
-  //     const config = {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     };
-  //     const response = await axios.post(
-  //       `${url}`,
-  //       { email: 'guest@guest.com', password: 'secret' },
-  //       config,
-  //     );
-  //     dispatch(loginUser(response.data.user));
-  //     toast.success('welcome guest user');
-  //     navigate('/');
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error('guest user login error. please try again');
-  //   }
-  // };
+  const guestUser = async () => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const response = await axios.post(
+        `${url}`,
+        { email: 'guest@gmail.com', password: 'secret' },
+        config,
+      );
+      dispatch(loginUser(response.data.user));
+      toast.success('welcome guest user');
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+      toast.error('guest user login error. please try again');
+    }
+  };
 
   return (
     <section className="h-screen grid place-items-center text-brown-900 bg-stone-100 font-tenor">
@@ -139,7 +139,7 @@ const LoginPage = () => {
         <button
           type="button"
           className="btn btn-block bg-rose-300 bg-opacity-80 hover:bg-rose-400 hover:bg-opacity-80 uppercase"
-          // onClick={guestUser}
+          onClick={guestUser}
         >
           guest user
         </button>
