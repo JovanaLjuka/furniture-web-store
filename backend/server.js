@@ -1,4 +1,6 @@
 require('dotenv').config()
+const fs = require('fs')
+const https = require('https')
 
 // require package, for using error handler middlewares
 require('express-async-errors')
@@ -18,7 +20,7 @@ const helmet = require('helmet')
 const sanitizeMongo = require('express-mongo-sanitize')
 
 const app = express()
-const port = process.env.PORT || 10000
+const port = process.env.PORT || 5002
 
 // http://localhost:5002/all
 
@@ -53,6 +55,28 @@ app.use('/users', userRouter)
 // Error handling middlewares
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
+
+// const startServer = async () => {
+//   try {
+//     await connectDB(process.env.MONGO_URI)
+//     https.createServer(app).listen(port, () => {
+//       console.log(`Server is listening port ${port}`)
+//     })
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+
+// const createServer = () => {
+//   https.createServer(app).listen(port, () => {
+//     console.log(`Server is listening port ${port}`)
+//   })
+// }
+
+// const startServer = async () => {
+//   await connectDB(process.env.MONGO_URI)
+//   createServer()
+// }
 
 const startServer = async () => {
   try {
