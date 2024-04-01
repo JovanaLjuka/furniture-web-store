@@ -32,12 +32,16 @@ const Slider = () => {
   };
 
   return (
-    <div className="w-full h-auto max-w-[1200px] max-h-[550px] m-auto py-5 px-4 relative group xl:mb-52">
-      <div className="w-full h-full rounded-2xl bg-center bg-cover duration-500 relative flex items-center justify-center">
-        <img src={sliderImages[currentIndex]} alt="slider" className="w-full h-full"></img>
+    <div className="w-full h-auto max-w-[1200px] max-h-[450px] m-auto py-5 px-4 relative group">
+      <div className="w-full h-auto bg-center bg-cover duration-500 relative flex items-center justify-center">
+        <img
+          src={sliderImages[currentIndex]}
+          alt="slider"
+          className="w-full h-full max-w-[1200px] max-h-[500px]"
+        ></img>
         <Link
           to="products"
-          className="btn btn-outline  w-[300px] h-[10px] m-auto absolute left-0 right-0 top-0 bottom-0 border hover:border-2 cursor-pointer "
+          className="btn btn-outline rounded-none w-[300px] h-[10px] m-auto absolute left-0 right-0 top-0 bottom-0 border hover:border-2 cursor-pointer "
         >
           Discover more
         </Link>

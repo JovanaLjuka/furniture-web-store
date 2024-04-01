@@ -15,16 +15,6 @@ const createJWT = ({ payload }) => {
 
 const isTokenValid = ({ token }) => jwt.verify(token, process.env.JWT_SECRET)
 
-// {
-//   try {
-//     const decoded = jwt.verify(token, process.env.JWT_SECRET)
-//     return decoded
-//   } catch (error) {
-//     console.error('Error veryfing JWT:', error.message)
-//     throw new Error('Error veryfing JWT')
-//   }
-// }
-
 const addCookiesToResponse = ({ res, user }) => {
   const token = createJWT({ payload: user })
   const oneDay = 1000 * 60 * 60 * 24
@@ -34,7 +24,7 @@ const addCookiesToResponse = ({ res, user }) => {
     expires: new Date(Date.now() + oneDay),
     // set up secure: true, once production is finished, which marks the cookie to be used with HTTPS only
     secure: process.env.NODE_ENV === 'production',
-    secure: false,
+    // secure: false,
     signed: true,
   })
 }

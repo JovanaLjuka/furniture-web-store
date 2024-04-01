@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 const CartPage = () => {
   const user = useSelector(state => state.user.user);
-
   const total = useSelector(state => state.cart.CartTotal);
 
   if (total === 0) {
     return <h2>Your cart is empty</h2>;
   }
+
   return (
     <main className="align-elements w-[85%] place-content-center">
       <h1 className="font-bold text-xl my-7">Shopping Cart</h1>
@@ -19,6 +19,8 @@ const CartPage = () => {
         </div>
         <div className="lg:col-span-3">
           <CartTotal />
+
+          {/* only user can proceed to checkout */}
           {user ? (
             <Link className="btn btn-outline btn-block mt-8" to="/checkout">
               Checkout

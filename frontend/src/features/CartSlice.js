@@ -18,7 +18,7 @@ const cartSlice = createSlice({
   initialState: getCartFromLocalStorage(),
   reducers: {
     addItem: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       const { product } = action.payload;
       const item = state.cartItems.find(item => item.cartId === product.cartId);
       if (item) {
@@ -68,23 +68,8 @@ const cartSlice = createSlice({
       state.totalItems = 0;
       state.cartTotal = 0;
       localStorage.setItem('cart', JSON.stringify(initialState));
-      // return initialState;
     },
   },
-  // extraReducers: builder => {
-  //   builder
-  //     .addCase(getCartItems.pending, state => {
-  //       state.isLoading = true;
-  //     })
-  //     .addCase(getCartItems.fulfilled, (state, action) => {
-  //       state.isLoading = false;
-  //       state.cartItems = action.payload;
-  //     })
-  //     .addCase(getCartItems.rejected, (state, action) => {
-  //       console.log(action);
-  //       state.isLoading = false;
-  //     });
-  // },
 });
 
 export const { addItem, increase, decrease, removeItem, clearCart } = cartSlice.actions;

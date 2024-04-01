@@ -1,8 +1,4 @@
 require('dotenv').config()
-const fs = require('fs')
-const https = require('https')
-
-// require package, for using error handler middlewares
 require('express-async-errors')
 
 const express = require('express')
@@ -22,13 +18,10 @@ const sanitizeMongo = require('express-mongo-sanitize')
 const app = express()
 const port = process.env.PORT || 5002
 
-// http://localhost:5002/all
-
 // middleware
-
 app.use(express.json())
-app.use(cors())
-// app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
+// app.use(cors())
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
 
 app.use(express.static(path.join(__dirname, 'public')))
 // console.log(path.join(__dirname, 'public'))
@@ -42,6 +35,7 @@ app.use(helmet())
 app.use(sanitizeMongo())
 
 // base routes
+// http://localhost:5002/all
 
 app.use('/', productRouter)
 app.use('/auth', authRouter)

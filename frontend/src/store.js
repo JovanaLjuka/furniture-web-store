@@ -6,7 +6,6 @@ import userReducer from './features/UserSlice';
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
-
     user: userReducer,
   },
 });

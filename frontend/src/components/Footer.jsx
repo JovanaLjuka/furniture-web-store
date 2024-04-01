@@ -10,11 +10,11 @@ const Footer = () => {
           to="/"
           className="hidden lg:flex btn text-4xl font-ojuju border-none text-khaki-200 items-center tracking-[1.4rem] font-extralight"
         >
-          <GiSofa className="text-blue-100" /> <span className="ml-2 text-blue-100">UFCS</span>
+          <GiSofa className="text-[#5f5858]" /> <span className="ml-2 text-[#3f3737]">UFCS</span>
         </NavLink>
         <p className="mt-2">Timeless furniture solutions since 1992</p>
       </aside>
-      <p className="m-2">Copyright © 2024 - All right reserved by Jovana Ljuka</p>
+      <p className="m-2">Copyright © 2024 - All rights reserved by Jovana Ljuka</p>
       <nav className="mr-10 mt-2 mb-2">
         <div className="grid grid-flow-col gap-4">
           <a>

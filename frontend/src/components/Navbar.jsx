@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="navbar-start font-style">
         <NavLink
           to="/"
-          className="hidden lg:flex ml-4 text-4xl p-1 font-ojuju border-none text-[#7b97cec7] items-center tracking-[1.4rem] font-extralight"
+          className="hidden lg:flex ml-4 text-4xl p-1 font-ojuju border-none text-[#493b3bc7] items-center tracking-[1.4rem] font-extralight"
         >
           <GiSofa className="text-4xl" /> <span className="ml-2">UFCS</span>
         </NavLink>

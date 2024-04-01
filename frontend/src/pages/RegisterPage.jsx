@@ -36,7 +36,7 @@ export const action = async ({ request }) => {
 const Registerpage = () => {
   const {
     register,
-    handleSubmit,
+
     formState: { errors },
   } = useForm();
 
@@ -51,18 +51,9 @@ const Registerpage = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  //   const submitForm = async () => {
-  //     const salt = await bcrypt.genSalt(10);
-  //     const hashedPassword = await bcrypt.hash(formData.password, salt);
-  //     formData.password = hashedPassword;
-  //     console.log(formData);
-  //     dispatch(registerUser(formData));
-  //   };
-
   return (
     <section className="h-screen grid place-items-center  text-brown-900  bg-stone-100 font-tenor">
       <Form
-        // onSubmit={handleSubmit(submitForm)}
         method="POST"
         className="card gap-y-5 rounded-xl  border-brown-700 bg-stone-300 w-96 p-10  shadow-lg"
       >

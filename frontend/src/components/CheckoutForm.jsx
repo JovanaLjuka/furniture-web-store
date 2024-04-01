@@ -1,5 +1,4 @@
 import { Form, useNavigate } from 'react-router-dom';
-import FormInput from './FormInput';
 import { clearCart } from '../features/CartSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -151,33 +150,3 @@ const CheckoutForm = () => {
 };
 
 export default CheckoutForm;
-
-{
-  /* <Form method="POST" className="flex flex-col gap-y-3 w-full">
-      <h4 className="font-semibold text-xl">Shipping information</h4>
-      <div className="flex gap-5 w-full">
-        <FormInput label="first name" name="firstname" type="text" />
-        <FormInput label="last name" name="lastname" type="text" />
-      </div>
-
-      <FormInput label="address" name="address" type="text" />
-      <select className="select select-bordered w-full max-w-xs mt-4">
-        <option disabled selected>
-          City
-        </option>
-        <option>Belgrade</option>
-        <option>Novi Sad</option>
-        <option>Cacak</option>
-      </select>
-
-      <button
-        type="submit"
-        className="btn btn-primary w-[30%] mt-8 bg-lavander-200"
-        onClick={() => {
-          handleSubmit();
-        }}
-      >
-        Buy now
-      </button>
-    </Form> */
-}

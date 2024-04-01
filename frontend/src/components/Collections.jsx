@@ -4,13 +4,11 @@ import img3 from '../assets/Images/col3.jpg';
 import img4 from '../assets/Images/col4.jpg';
 
 const Collections = () => {
-  const images = [img1, img2, img3, img4];
-
   return (
-    <section className="w-[85%] align-elements xl:mt-12 xl:max-w-7xl">
+    <section className="w-[85%] align-elements mt-32 xl:mt-52 xl:max-w-7xl">
       <div className="relative flex flex-col gap-y-5 mt-7 xl:mx-auto xl:flex-row-reverse ">
-        <div className="w-full h-64 xl:w-[70%] lg:h-auto">
-          <img src={img1} alt="img1" className="h-full w-full object-cover" />
+        <div className="w-full h-64 xl:w-[70%] xl:h-[10%]">
+          <img src={img1} alt="img1" className="h-full w-full object-fit" />
         </div>
 
         <div className="w-full bg-white-100 xl:max-w-2xl xl:shadow-lg xl:absolute xl:top-0  xl:w-[60%] xl:left-[-10%] xl:mt-20 xl:ml-10 ">
@@ -89,13 +87,3 @@ const Collections = () => {
 };
 
 export default Collections;
-
-//         <h2 className="m-auto lg:m-4">Experience the Difference</h2>
-//         <p className="prose mt-10">
-//           Whether you're furnishing a chic city apartment, a trendy loft, or a modern office space,
-//           <span className="font-bold"> Urban Furniture Concept Store </span>is your destination for
-//           premium furniture solutions that make a statement. Browse our collection today and
-//           discover the perfect pieces to elevate your urban oasis.
-//         </p>
-//       </div>
-//     </div>

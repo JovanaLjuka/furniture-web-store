@@ -28,7 +28,7 @@ const ContactForm = () => {
   return (
     <section className="align-elements w-[85%] flex items-center justify-between gap-x-12 md:gap-x-2 mt-10">
       <div className="w-[30%] md:w-[40%]">
-        {/* details */}
+        {/* info */}
         <h1 className="text-l md:text-3xl font-bold tracking-tight text-gray-900">Contact Us</h1>
         <p className="my-2 md:my-4 text-sm md:text-m leading-8 text-gray-600">
           Feel free to reach out us for any inquiries or assistance. <br />

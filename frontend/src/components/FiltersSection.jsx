@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import FilterOptions from './FilterOptions';
 import SearchInput from './SearchInput';
 

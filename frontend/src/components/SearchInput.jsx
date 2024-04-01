@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, useLoaderData } from 'react-router-dom';
 
 const SearchInput = () => {
-  const { params } = useLoaderData;
+  // const { params } = useLoaderData;
 
   return (
     <Form>

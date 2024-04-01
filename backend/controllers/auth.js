@@ -1,6 +1,5 @@
 const User = require('../models/user')
 const { addCookiesToResponse, createTokenUser } = require('../utils')
-const bcrypt = require('bcryptjs')
 
 // REGISTER
 
@@ -12,6 +11,8 @@ const register = async (req, res) => {
 
   const user = await User.create({ username, email, password, role })
   const tokenUser = createTokenUser(user)
+
+  // when user register, token is created and sent as cookie with response
 
   addCookiesToResponse({ res, user: tokenUser })
 
@@ -36,6 +37,8 @@ const login = async (req, res) => {
     throw new Error('Invalid credentials')
   }
   const tokenUser = createTokenUser(user)
+  // once user logs in, the server generate JWT containing information about user
+  // (username,id,role)
   addCookiesToResponse({ res, user: tokenUser })
 
   res.status(200).json({ user: tokenUser })

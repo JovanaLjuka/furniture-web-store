@@ -19,3 +19,5 @@ export { default as CartTotal } from './CartTotal';
 export { default as CheckoutForm } from './CheckoutForm';
 export { default as ContactForm } from './ContactForm';
 export { default as Footer } from './Footer';
+export { default as AdminDashboard } from './AdminDashboard';
+export { default as AdminHeader } from './AdminHeader';

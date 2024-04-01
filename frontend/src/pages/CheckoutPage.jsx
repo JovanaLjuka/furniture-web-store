@@ -16,19 +16,14 @@ export const loader = store => async () => {
 
 const CheckoutPage = () => {
   const cartItems = useSelector(state => state.cart.totalItems);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   if (cartItems.length === 0) {
     return <h2 className="text-xl font-semibold">Your cart is empty</h2>;
   }
   return (
     <main className="align-elements">
-      {/* <div className="mt-10 grid gap-10 md:grid-cols-2 items-start"> */}
       <CheckoutForm />
-      {/* <div className="w-[20%]">
-          <CartTotal />
-        </div>
-      </div> */}
     </main>
   );
 };

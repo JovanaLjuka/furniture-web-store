@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
   },
   color: {
     type: [String],
-    required: true,
+    default: ['#fff'],
   },
   image: {
     type: String,
@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema({
   },
   material: {
     type: [String],
-    required: true,
+    default: ['boucle', 'wood'],
   },
   price: {
     type: Number,

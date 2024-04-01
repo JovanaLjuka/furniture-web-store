@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import {
@@ -14,6 +14,7 @@ import {
   ProductsPage,
   RegisterPage,
   SingleProductPage,
+  AdminPanel,
 } from './pages';
 
 import { Error } from './components';
@@ -28,6 +29,8 @@ import { loader as CheckoutLoader } from './pages/CheckoutPage';
 
 import { action as RegisterAction } from './pages/RegisterPage';
 import { action as LoginAction } from './pages/LoginPage';
+import { action as AdminAction } from './components/AdminDashboard';
+
 import { store } from './store';
 
 const queryClient = new QueryClient();
@@ -81,6 +84,13 @@ const router = createBrowserRouter([
     element: <RegisterPage />,
     errorElement: <ErrorPage />,
     action: RegisterAction,
+  },
+  {
+    path: '/admin',
+    element: <AdminPanel />,
+    errorElement: <ErrorPage />,
+    loader: ProductsLoader,
+    action: AdminAction,
   },
 ]);
 

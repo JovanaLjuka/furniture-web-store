@@ -6,7 +6,6 @@ import { addItem } from '../features/CartSlice';
 const ProductsGrid = () => {
   const { products } = useLoaderData();
   // console.log(products);
-
   const dispatch = useDispatch();
 
   return (
@@ -30,20 +29,6 @@ const ProductsGrid = () => {
             dispatch(addItem({ product: cartProduct }));
           };
 
-          // const increaseAmount = () => {
-          //   dispatch(increase({ _id }));
-          // };
-          // const decreaseAmount = () => {
-          //   dispatch(decrease({ _id }));
-          // };
-          // const removeFromCart = () => {
-          //   dispatch(removeItem({ cartId }));
-          // };
-
-          // const imagePathFromServer = image;
-          // const finalImagePath = imagePathFromServer.startsWith('/')
-          //   ? imagePathFromServer
-          //   : '/' + imagePathFromServer;
           return (
             <article
               key={_id}

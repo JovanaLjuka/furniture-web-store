@@ -52,10 +52,6 @@ const FilterOptions = () => {
           max="2000"
           step="50"
         />
-        {/* <select name="price" id="price" className="select border-brown-800 w-full max-w-xs">
-          <option value="0,500">$0 - $500</option>
-          <option value="500,1000">$500 - $1000</option>
-        </select> */}
         <span className="flex justify-center">$0 - ${maxPrice}</span>
       </div>
       <div className="flex flex-col ml-3">

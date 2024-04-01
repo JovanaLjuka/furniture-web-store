@@ -4,9 +4,9 @@ import ProductsList from './ProductsList';
 import { BsGrid } from 'react-icons/bs';
 import { BsList } from 'react-icons/bs';
 import { useState } from 'react';
+
 const ProductsContainer = () => {
-  const { totalPages, currentPage, totalProducts } = useLoaderData();
-  const total = totalProducts;
+  const { totalProducts } = useLoaderData();
   const [layout, setLayout] = useState('grid');
 
   const setActiveStyles = pattern => {

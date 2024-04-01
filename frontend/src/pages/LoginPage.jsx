@@ -15,8 +15,9 @@ const url = 'http://localhost:5002/auth/login';
 export const action =
   store =>
   async ({ request }) => {
-    console.log(store);
-    console.log(request);
+    // console.log(store);
+    // console.log(request);
+
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     // console.log(data);
@@ -28,9 +29,17 @@ export const action =
       };
       const response = await axios.post(`${url}`, data, config);
       store.dispatch(loginUser(response.data.user));
-      // console.log(response);
+
+      // const LinUser = useSelector(state => state.user.user);
+      // console.log(LinUser);
+
+      console.log(response);
       toast.success('Login successful');
-      return redirect('/');
+      if (response.data.user.role === 'admin') {
+        return redirect('/admin');
+      } else {
+        return redirect('/');
+      }
     } catch (error) {
       const errorMessage =
         error?.response?.data?.error?.message || 'please double check your credentials';
@@ -38,12 +47,12 @@ export const action =
       return null;
     }
   };
+
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
     register,
-    // handleSubmit,
     formState: { errors },
   } = useForm();
   const [formData, setFormData] = useState({
@@ -80,7 +89,6 @@ const LoginPage = () => {
   return (
     <section className="h-screen grid place-items-center text-brown-900 bg-stone-100 font-tenor">
       <Form
-        // onSubmit={handleSubmit(submitForm)}
         method="POST"
         className="card gap-y-5 rounded-xl border-brown-700 bg-stone-300 w-96 p-10  shadow-lg"
       >

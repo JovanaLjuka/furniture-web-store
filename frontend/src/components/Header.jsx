@@ -24,7 +24,7 @@ const Header = () => {
     dispatch(logoutUser());
   };
   return (
-    <header className="bg-[#aeb9d1bb] w-full py-2 text-neutral-content">
+    <header className="bg-[#b1b2b6bb] w-full py-2 text-neutral-content">
       <div className="align-elements flex justify-center sm:justify-end">
         {LinUser ? (
           <div className="flex gap-x-2 sm:gap-x-8 items-center">
