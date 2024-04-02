@@ -4,7 +4,7 @@ import { clearCart } from '../features/CartSlice';
 import { logoutUser } from '../features/UserSlice';
 import axios from 'axios';
 
-const url = 'http://localhost:5002/auth/logout';
+const url = 'https://furniture-web-store.onrender.com/auth/logout';
 
 const Header = () => {
   const navigate = useNavigate();
