@@ -21,8 +21,6 @@
     --> ReactJS // for user interface, state managment, routing
     --> TailwindCSS // for responsive design and component styling
 
-Postman documentation: https://documenter.getpostman.com/view/32588281/2sA35G3guo#ad8066a0-8921-495f-a7d6-d41339a03d2c
-
 ### PROJECT SETUP
 
 1. Clone the Repository:
