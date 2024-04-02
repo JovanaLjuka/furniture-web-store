@@ -21,8 +21,11 @@ const port = process.env.PORT || 5002
 // middleware
 app.use(express.json())
 
-app.use(cors())
+// app.use(cors())
 // app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
+app.use(
+  cors({ origin: 'https://ufcs-react-app.netlify.app/', credentials: true })
+)
 
 app.use(express.static(path.join(__dirname, 'public')))
 // console.log(path.join(__dirname, 'public'))
