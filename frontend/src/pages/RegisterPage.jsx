@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 axios.defaults.withCredentials = true;
 
-const url = 'http://localhost:5002/auth/register';
+const url = 'https://furniture-web-store.onrender.com/auth/register';
 
 export const action = async ({ request }) => {
   console.log(request);

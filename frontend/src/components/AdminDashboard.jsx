@@ -7,7 +7,7 @@ import axios from 'axios';
 
 Modal.setAppElement('#root');
 
-const url = 'http://localhost:5002/';
+const url = 'https://furniture-web-store.onrender.com/';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -37,7 +37,7 @@ const AdminDashboard = () => {
     title: '',
     type: '',
     price: '',
-    image: 'http://localhost:5002/uploads/',
+    image: '',
     company: '',
     description: '',
     designer: '',
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
       const formData = new FormData();
       formData.append('image', selectedFile);
 
-      await axios.post('http://localhost:5002/uploadimage', formData, {
+      await axios.post('https://furniture-web-store.onrender.com/uploadimage', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
