@@ -11,7 +11,7 @@
     "prettier": "npx prettier src test --check",
     "prettier:fix": "npm run prettier -- --write"
   },
-  "proxy": "http://localhost:5002",
+  "proxy": "https://furniture-web-store.onrender.com/",
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
     "@reduxjs/toolkit": "^2.2.1",
